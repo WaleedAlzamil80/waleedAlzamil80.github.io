@@ -1,4 +1,4 @@
-# Waleed Khalid Alzamil - Portfolio
+# Waleed Khalid Alzamil
 
 ## About Me
 I am a **Deep Learning Engineer** passionate about AI, optimization, and computational intelligence. My work spans research, model development, and AI applications in various fields, including medical imaging, CV, NLP, and robotics. 
