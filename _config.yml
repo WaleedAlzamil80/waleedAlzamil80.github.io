@@ -1,5 +1,67 @@
-title: Waleed Alzamil
-show_downloads: true
-remote_theme: pages-themes/minimal@v0.2.0
+title: "Waleed Alzamil"
+description: "Deep Learning Engineer | AI Researcher | Computer Vision | 3D Intelligence"
+baseurl: "" # leave empty if hosting at root, like username.github.io
+url: "https://waleedalzamil80.github.io" # change if using a custom domain
+
+# Author details
+author:
+  name: "Waleed Alzamil"
+  email: "waleedalzamil80@gmail.com"
+  github: "WaleedAlzamil80"
+  linkedin: "waleedalzamil80"
+
+# Theme settings
+remote_theme: "mmistakes/minimal-mistakes"
+
 plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Google Analytics (optional)
+google_analytics: UA-XXXXXXXXX-X # Add your own tracking ID if needed
+
+# Social links (for the sidebar)
+social:
+  links:
+    - https://github.com/WaleedAlzamil80
+    - https://linkedin.com/in/waleedalzamil80
+
+# Build settings
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
+      author_profile: true
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+# Navigation
+nav:
+  - title: "Home"
+    url: "/"
+  - title: "Projects"
+    url: "/projects/"
+  - title: "Publications"
+    url: "/publications/"
+  - title: "Resume"
+    url: "/resume.pdf"
+
+# Optional - Exclude files from being built
+exclude:
+  - node_modules
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md

@@ -1,98 +1,169 @@
-# Waleed Khalid Alzamil
+# Waleed Alzamil
 
-## About Me
-I am a **Deep Learning Engineer** passionate about AI, optimization, and computational intelligence. My work spans research, model development, and AI applications in various fields, including medical imaging, CV, NLP, and robotics. 
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+![GitHub followers](https://img.shields.io/github/followers/WaleedAlzamil80?style=social)
+![GitHub stars](https://img.shields.io/github/stars/WaleedAlzamil80?style=social)
 
-📍 **Location:** Cairo, Egypt  
-📧 **Email:** [waleedalzamil80@gmail.com](mailto:waleedalzamil80@gmail.com)  
-🔗 **LinkedIn:** [linkedin.com/in/waleedalzamil80](https://linkedin.com/in/waleedalzamil80)  
-🔗 **GitHub:** [github.com/WaleedAlzamil80](https://github.com/WaleedAlzamil80)  
+<img src="assets/profile.jpg" alt="Profile" width="150" style="border-radius: 50%; margin-top: 10px;">
 
 ---
 
-## Skills
-- **Deep Learning & Machine Learning**: PyTorch, TensorFlow, Scikit-learn, OpenCV
-- **Optimization & Computational Intelligence**: SciPy, NumPy
-- **NLP & LLMs**: Hugging Face, OpenAI, RAG Systems
-- **Computer Vision**: Masked Autoencoders, Super-Resolution, Segmentation, Contrastive Learning
-- **Databases & Deployment**: PostgreSQL, MongoDB, Docker, Flask, ROS, GCP
-- **Robotics & 3D Modeling**: MuJoCo, OpenAI-Gym, Gaussian Splatting, COLMAP
+## 🧠 About Me
+
+I am a **Deep Learning Engineer** passionate about AI, optimization, and computational intelligence. My work spans research, model development, and AI applications across medical imaging, computer vision, NLP, and robotics.
+
+📍 **Location:** Cairo, Egypt  
+📧 **Email:** [waleedalzamil80@gmail.com](mailto:waleedalzamil80@gmail.com)  
+🔗 **LinkedIn:** [linkedin.com/in/waleedalzamil80](https://linkedin.com/in/waleedalzamil80){:target="_blank"}  
+🔗 **GitHub:** [github.com/WaleedAlzamil80](https://github.com/WaleedAlzamil80){:target="_blank"}
+
+---
+
+## 🧰 Skills
+
+- **Deep Learning & Machine Learning**: PyTorch, TensorFlow, Scikit-learn, OpenCV  
+- **Optimization & Computational Intelligence**: SciPy, NumPy  
+- **NLP & LLMs**: Hugging Face, OpenAI, Retrieval-Augmented Generation (RAG)  
+- **Computer Vision**: Contrastive Learning, MAEs, Super-Resolution, Segmentation  
+- **Databases & Deployment**: PostgreSQL, MongoDB, Docker, Flask, FastAPI, Azure, AWS  
+- **Robotics & 3D Modeling**: MuJoCo, OpenAI-Gym, Gaussian Splatting, Point Clouds  
 - **Programming Languages**: Python, Java, C++
 
 ---
 
-## Research & Publications
-📄 **Crown-Generation Part 01: 3D Teeth Segmentation** *(Jan 2025)*  
-📄 **Teeth Bleaching and Hollywood Smile - Proof of Concept Report** *(Dec 2024)*  
-📄 **RAG System for Test Case Generation** *(Feb 2024)*  
-📄 **Comparison of Optimization Algorithms** *(May 2023)*  
-📄 **Deep Convolutional Neural Networks for Image Classification** *(2023)*
+## 📄 Research & Publications
+
+- **Crown-Generation Part 01: 3D Teeth Segmentation** *(Jan 2025)*  
+- **Teeth Bleaching and Hollywood Smile - Proof of Concept Report** *(Dec 2024)*  
+- **RAG System for Test Case Generation** *(Feb 2024)*  
+- **Comparison of Optimization Algorithms** *(May 2023)*  
+- **Deep Convolutional Neural Networks for Image Classification** *(2023)*  
 
 ---
 
-## Experience
-### AI Engineer (Tanweer) *(07/2023 – 06/2024)*
-- Improved fine-tuned LLMs (RWKV-4) for English-Arabic translation.
-- Automated full-episode translations, reducing processing time from 8 hours to 30 seconds.
-- Deployed AI translation models on Google Cloud Platform.
+## 💼 Experience
 
-### NLP Engineer (Siemens, Internship) *(09/2023 – 01/2024)*
-- Enhanced test case generation using LLMs to improve code coverage.
-- Utilized GCOV to analyze and optimize test case efficiency.
+### 🔹 AI Engineer @ Tanweer *(07/2023 – 06/2024)*
+- Fine-tuned LLMs (RWKV-4) for English-Arabic translation.
+- Reduced translation time from 8 hours to 30 seconds.
+- Deployed AI pipelines on Google Cloud.
+
+### 🔹 NLP Engineer Intern @ Siemens *(09/2023 – 01/2024)*
+- Enhanced test case generation via LLMs.
+- Used GCOV for code coverage optimization.
 
 ---
 
-## Projects
-### **DeepLense (GSoC 2025 – Foundation Model)**
-Developed a vision foundation model for gravitational lensing data.
-- Implemented **Masked Autoencoders** (MAE) for feature extraction.
-- Achieved **99.67% AUC** in classification and **29.62 dB PSNR** in super-resolution.
+## 🚀 Projects
 
-### **AI-Automated Dental Crown Generation (Graduation Project)**
-Developing 3D teeth segmentation and crown generation models.
-- Implemented **FoldingNet, DGCNN, and Transformer-based models**.
-- Focused on high-accuracy **3D object reconstruction**.
+### 🧬 DeepLense (GSoC 2025 – Vision Foundation Model)
+**Goal**: Detect gravitational lenses using masked feature extraction & super-resolution.
 
-### **3D Interactive Virtual Estate (3DIVE)**
-Developed a **3D property exploration system**.
-- Extracted video frames, estimated camera poses, and reconstructed 3D models.
-- Used **Gaussian Splatting** and **SuGaR** techniques.
+<!--img src="assets/deeplense.gif" alt="DeepLense Project" width="100%"-->
 
-### **Othello AI Game**
+- Implemented **Masked Autoencoders (MAE)** for feature extraction.
+- Achieved **99.67% AUC** and **29.62 dB PSNR**.
+- [🔗 GitHub](https://github.com/WaleedAlzamil80/deeplense25){:target="_blank"}
+
+---
+
+### 🦷 AI-Automated Dental Crown Generation *(Graduation Project)*  
+**Goal**: Segment teeth & generate 3D crowns using deep learning and geometric methods.
+
+<!--img src="assets/3dcrown_pipeline.png" alt="3D Crown Generation" width="100%"-->
+
+- Used **FoldingNet, DGCNN**, and **Transformers**.
+- Focused on **3D object reconstruction** and accuracy.
+- [🔗 GitHub](https://github.com/WaleedAlzamil80/3DModels){:target="_blank"}
+
+---
+
+### 🏘️ 3D Interactive Virtual Estate (3DIVE)
+**Goal**: Explore properties in 3D via camera pose estimation and Gaussian Splatting.
+
+<!--img src="assets/3dive.gif" alt="3DIVE" width="100%"-->
+
+- Used **Gaussian Splatting** and **SuGaR**.
+- Reconstructed environments from real estate videos.
+
+---
+
+### 🎮 Othello AI Game
+**Goal**: Compete using heuristic & learning-based agents.
+
+<!--img src="assets/othello_ai.png" alt="Othello AI" width="100%"-->
+
 - Implemented **Minimax & Alpha-Beta Pruning**.
-- Developed a **Reinforcement Learning (RL) agent** to compete against heuristic-based players.
-
-### **Real-Time Violence Detection**
-- Developed a **CNN-BiLSTM model** for video-based violence detection.
-
-### **Synergy EMGs Proportional Control**
-- Trained ML models on **EMG sensor data** to predict robotic hand movement.
+- Developed **RL agent** for strategy learning.  
+- [🔗 GitHub](https://github.com/WaleedAlzamil80/Othello-AI){:target="_blank"}
 
 ---
 
-## Volunteering & Leadership
-### Ain Shams University Racing Team (ASURT)
-- **Deep Learning Team Lead** *(2023 – Present)*
-- Developed **perception modules** for autonomous racing vehicles.
-- Created **educational deep learning content** for team members.
+### 🎥 Real-Time Violence Detection
+**Goal**: Detect violence in video streams using hybrid deep learning models.
 
-### Machathon 4.0 (ASURT & STP Collaboration)
-- Built & raced **autonomous cars** using Python & C++ robotics algorithms.
+<!-- img src="assets/violence_detection.gif" alt="Violence Detection" width="100%"-->
 
----
-
-## Education
-🎓 **Ain Shams University** *(Senior, Computer & Systems Engineering)*  
-📊 **CGPA:** 3.0  
+- Built **CNN-BiLSTM pipeline** for temporal analysis.
+- Tested on surveillance datasets.
 
 ---
 
-## Featured Repositories
-- 🦷 **3D Teeth Segmentation & Crown Generation**: [3DModels](https://github.com/WaleedAlzamil80/3DModels)
-- 🔭 **DeepLense (GSoC 2025)**: [DeepLense25](https://github.com/WaleedAlzamil80/deeplense25/)
-- 🎮 **Othello AI**: [Othello AI](https://github.com/WaleedAlzamil80/Othello-AI)
-- 🦾 **EMG-Based Robotic Hand Control**: [EMG Synergy](https://github.com/WaleedAlzamil80/EMG_Synergy_project)
+### 🦾 Synergy EMGs Proportional Control
+**Goal**: Predict robotic hand motion from EMG data.
+
+<!-- img src="assets/emg_hand.gif" alt="EMG Project" width="100%"-->
+
+- Trained regression models on **real EMG sensor signals**.
+- Enabled real-time robotic actuation.
+- [🔗 GitHub](https://github.com/WaleedAlzamil80/EMG_Synergy_project){:target="_blank"}
 
 ---
 
-🚀 **Looking for opportunities in AI research, medical imaging, and generative modeling!**
+## 👨‍🏫 Volunteering & Leadership
+
+### 🏎️ Ain Shams University Racing Team (ASURT)
+- **Deep Learning Lead** *(2023 – Present)*
+- Built **perception pipelines** for autonomous vehicles.
+- Created **educational material** for junior team members.
+
+### 🤖 Machathon 4.0 (ASURT & STP)
+- Built & raced **autonomous cars** using Python & C++.
+- Participated in national-level ML & robotics competition.
+
+---
+
+## 🎓 Education
+
+**Ain Shams University** *(Senior - Computer & Systems Engineering)*  
+📊 **CGPA:** 3.0 / 4.0  
+📍 Cairo, Egypt  
+
+---
+
+## ⭐ Featured Repositories
+
+- 🦷 [3D Teeth Segmentation & Crown Generation](https://github.com/WaleedAlzamil80/3DModels){:target="_blank"}  
+- 🔭 [DeepLense (GSoC 2025)](https://github.com/WaleedAlzamil80/deeplense25/){:target="_blank"}  
+- 🎮 [Othello AI Game](https://github.com/WaleedAlzamil80/Othello-AI){:target="_blank"}  
+- 🦾 [EMG Robotic Hand Control](https://github.com/WaleedAlzamil80/EMG_Synergy_project){:target="_blank"}
+
+---
+
+## 🎯 Career Goals
+
+🚀 **Looking for opportunities in AI research, medical imaging, and generative modeling**.  
+Let’s collaborate on the future of deep learning and 3D intelligence.
+
+---
+
+## 📊 GitHub Stats
+
+![Waleed's GitHub stats](https://github-readme-stats.vercel.app/api?username=WaleedAlzamil80&show_icons=true&theme=default)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=WaleedAlzamil80&layout=compact&theme=default)
+
+---
+
+> Designed with ❤️ by Waleed Alzamil
