@@ -1,3 +1,10 @@
+---
+layout: single
+title: Othello AI
+permalink: /projects/othello-ai/
+author_profile: false
+---
+
 # Othello AI
 Welcome to the Othello AI project! This project implements an AI to play the game of Othello (also known as Reversi) with a graphical user interface (GUI). The AI supports various difficulty levels and different algorithms including MinMax and Monte Carlo Tree Search (MCTS).
 
@@ -6,12 +13,12 @@ Welcome to the Othello AI project! This project implements an AI to play the gam
 ### Screens
 
 1. The main screen is where you decide to play or end exit the game.
-![Main_Menu.png](./assets/Main_Menu.png)
+![Main_Menu.png](/waleedAlzamil80.github.io/assets/othello/Main_Menu.png)
 2. Players screen is where each player select the algorithm
-![player1.png](./assets/algo1.png)
-![player2.png](./assets/algo2.png)
+![player1.png](/waleedAlzamil80.github.io/assets/othello/algo1.png)
+![player2.png](/waleedAlzamil80.github.io/assets/othello/algo2.png)
 3. Difficulty where we specify the difficulty of the algorithm
-![difficulty.png](./assets/diff.png)
+![difficulty.png](/waleedAlzamil80.github.io/assets/othello/diff.png)
 4. Game screen is where the game is played and the Othello board is displayed. The board is an 8x8 grid where the game pieces are placed.
 You have the options to:
 - Pause the game
@@ -19,8 +26,8 @@ You have the options to:
 - Restart the game
 - Go back to the Main Menu
 
-![drawpng.png](./assets/drawpng.png)
-![white.png](./assets/white.png)
+![drawpng.png](/waleedAlzamil80.github.io/assets/othello/drawpng.png)
+![white.png](/waleedAlzamil80.github.io/assets/othello/Winner.png)
 
 
 ## Main Algorithms:

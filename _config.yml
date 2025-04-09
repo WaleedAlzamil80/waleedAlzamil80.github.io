@@ -48,15 +48,15 @@ collections:
     permalink: /projects/:path/
 
 # Navigation
-nav:
+navigation:
   - title: "Home"
-    url: "/"
+    url: /
   - title: "Projects"
-    url: "/projects/"
+    url: /projects/
   - title: "Publications"
-    url: "/publications/"
+    url: /publications/
   - title: "Resume"
-    url: "/resume.pdf"
+    url: /resume.pdf
 
 # Optional - Exclude files from being built
 exclude:

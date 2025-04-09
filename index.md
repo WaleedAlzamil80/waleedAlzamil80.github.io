@@ -1,3 +1,9 @@
+---
+layout: home
+title: Waleed Alzamil
+author_profile: true
+---
+
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
@@ -31,13 +37,18 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 ---
 
-## 📄 Research & Publications
+## 📚 Research & Publications
 
 - **Crown-Generation Part 01: 3D Teeth Segmentation** *(Jan 2025)*  
 - **Teeth Bleaching and Hollywood Smile - Proof of Concept Report** *(Dec 2024)*  
 - **RAG System for Test Case Generation** *(Feb 2024)*  
 - **Comparison of Optimization Algorithms** *(May 2023)*  
 - **Deep Convolutional Neural Networks for Image Classification** *(2023)*  
+- 📄 [Crown Generation - Part 1](publications/CrownGeneration_part_1.pdf)
+- 📄 [Milestone 1](publications/MileStone1.pdf)
+- 📄 [Milestone 2](publications/MileStone2.pdf)
+- 📄 [EMG Report](publications/EMG_report.pdf)
+- 📄 [RAG Report](publications/rag.pdf)
 
 ---
 
@@ -52,7 +63,6 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 - Enhanced test case generation via LLMs.
 - Used GCOV for code coverage optimization.
 
----
 
 ## 🚀 Projects
 
@@ -63,6 +73,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 - Implemented **Masked Autoencoders (MAE)** for feature extraction.
 - Achieved **99.67% AUC** and **29.62 dB PSNR**. [🔗 GitHub](https://github.com/WaleedAlzamil80/deeplense25){:target="_blank"}
+- 🔭 [DeepLense](projects/deeplense.md)
 
 ---
 
@@ -73,6 +84,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 - Used **FoldingNet, DGCNN**, and **Transformers**.
 - Focused on **3D object reconstruction** and accuracy. [🔗 GitHub](https://github.com/WaleedAlzamil80/3DModels){:target="_blank"}
+- 🦷 [Crown Generation](projects/crown.md)
 
 ---
 
@@ -93,6 +105,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 - Implemented **Minimax & Alpha-Beta Pruning**.
 - Developed **RL agent** for strategy learning. [🔗 GitHub](https://github.com/WaleedAlzamil80/Othello-AI){:target="_blank"}
+- 🎮 [Othello AI](projects/othello-ai.md)
 
 ---
 
@@ -113,6 +126,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 - Built **CNN-BiLSTM pipeline** for temporal analysis.
 - Tested on surveillance datasets.
+- 🚨 [Real-Time Violence Detection](projects/realtimeviolencedetection.md)
 
 ---
 
@@ -150,6 +164,12 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 🚀 **Looking for opportunities in AI research, medical imaging, and generative modeling**.  
 Let’s collaborate on the future of deep learning and 3D intelligence.
+
+---
+
+## 📄 Resume
+
+- [Download Resume (PDF)](resume.pdf)
 
 ---
 

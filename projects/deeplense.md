@@ -1,3 +1,10 @@
+---
+layout: single
+title: Foundation Model
+permalink: /projects/deeplense/
+author_profile: false
+---
+
 ## **Specific Test VI - Foundation Model**  
 
 This folder contains my solution for **Specific Test VI: Foundation Model** of the DeepLense GSoC 2025 project. The task involves pretraining a **Masked Autoencoder (MAE)** on strong lensing images and fine-tuning it for **multi-class classification** and **super-resolution** using **PyTorch**.  
@@ -11,10 +18,10 @@ The test consists of two main parts:
 
 #### 📷 Sample Images for Each Task
 - **Samples for multi-class classification**
-   ![Sample Images](assets/classification/classSample.png)
+   ![Sample Images](/waleedAlzamil80.github.io/assets/deeplense/classification/classSample.png)
  
 - **Samples for super-resolution**
-   ![Sample Images](assets/superresolution/superRsample.png)
+   ![Sample Images](/waleedAlzamil80.github.io/assets/deeplense/superresolution/superRsample.png)
 
 ### 📂 **Folder Structure**  
 ```
@@ -43,7 +50,7 @@ specific_test_06/
 │   ├── vis.py                        # save plots like pca and tsne
 │   ├── extract_encoderPart.py        # take parts from the trained mae model to be used for fine-tuning models
 │
-│── assets/                        # 📂 Store evaluation results
+│── /waleedAlzamil80.github.io/assets/deeplense/                        # 📂 Store evaluation results
 │   ├── mae/                                   # Images
 │   ├── classification/                        # Images
 │   ├── superresolution/                       # Images
@@ -62,14 +69,14 @@ specific_test_06/
 
 #### **Input for Encoder**
 - **Sample for splitted-image**
-   ![Sample Images](assets/mae/splitted_image.png)
+   ![Sample Images](/waleedAlzamil80.github.io/assets/deeplense/mae/splitted_image.png)
 
 - **Sample for masked-image**
-   ![Sample Images](assets/mae/masked_image.png)
+   ![Sample Images](/waleedAlzamil80.github.io/assets/deeplense/mae/masked_image.png)
 
 - **Masked pathces and Visible patches**
 
-   | ![Masked Image](assets/mae/masked_patches.png) | ![EncoderInput](assets/mae/visible_patches.png) |
+   | ![Masked Image](/waleedAlzamil80.github.io/assets/deeplense/mae/masked_patches.png) | ![EncoderInput](/waleedAlzamil80.github.io/assets/deeplense/mae/visible_patches.png) |
    |------------|-------------|
 
 
@@ -101,15 +108,15 @@ Below are the evaluation results for each task:
 
 #### **1️⃣ Masked Autoencoder (MAE) Pretraining**  
 - **Training Loss (MSE) over 250 epochs**  
-  ![MAE Loss](assets/mae/MAE_Losses.png)  
+  ![MAE Loss](/waleedAlzamil80.github.io/assets/deeplense/mae/MAE_Losses.png)  
 - **PCA and TSNE on the embedding**  
   - Hidder representation:  
-    | ![pca](assets/mae/pca_plot.png) | ![tsne](assets/mae/tsne_plot.png) |
+    | ![pca](/waleedAlzamil80.github.io/assets/deeplense/mae/pca_plot.png) | ![tsne](/waleedAlzamil80.github.io/assets/deeplense/mae/tsne_plot.png) |
     |------------|------------|
 
 #### **2️⃣ Multi-Class Classification**  
 - **Accuracy & AUC Score over epochs**  
-    | ![Accuracy Metrics](assets/classification/Accuracies.png) | ![AUC Metrics](assets/classification/AUC.png) |
+    | ![Accuracy Metrics](/waleedAlzamil80.github.io/assets/deeplense/classification/Accuracies.png) | ![AUC Metrics](/waleedAlzamil80.github.io/assets/deeplense/classification/AUC.png) |
     |------------|------------|
 
 - **Classification Report**
@@ -126,18 +133,18 @@ weighted avg       0.97      0.97      0.97      8911
 ```
 
 - **Confusion Matrix and ROC Curve**
-    | ![ROC Metrics](assets/classification/ROC_curve.png) | ![Confusion Matrix](assets/classification/confusion_matrix.png) |
+    | ![ROC Metrics](/waleedAlzamil80.github.io/assets/deeplense/classification/ROC_curve.png) | ![Confusion Matrix](/waleedAlzamil80.github.io/assets/deeplense/classification/confusion_matrix.png) |
     |------------|------------|
 
 - **PCA & tsne plotting**
-    | ![PCA](assets/classification/pca_plot.png) | ![tsne](assets/classification/tsne_plot.png) |
+    | ![PCA](/waleedAlzamil80.github.io/assets/deeplense/classification/pca_plot.png) | ![tsne](/waleedAlzamil80.github.io/assets/deeplense/classification/tsne_plot.png) |
     |------------|------------|
 
 #### **3️⃣ Super-Resolution**
 - **MSE as a loss, SSIM, PSNR over epochs**
-      | ![SSIM](assets/superresolution/SSIM.png) | ![PSNR](assets/superresolution/PSNR.png) |
+      | ![SSIM](/waleedAlzamil80.github.io/assets/deeplense/superresolution/SSIM.png) | ![PSNR](/waleedAlzamil80.github.io/assets/deeplense/superresolution/PSNR.png) |
     |------------|------------|
-  ![MSE](assets/superresolution/MAE_Losses.png)
+  ![MSE](/waleedAlzamil80.github.io/assets/deeplense/superresolution/MAE_Losses.png)
 
 - **Final Metrics** *these results from best SSIM model **superresolution_SSIM** and it's very close to **superresolution_PSNR***
      - Final Validation MSE: 0.002293
@@ -161,7 +168,7 @@ weighted avg       0.97      0.97      0.97      8911
 
 - **Super-resolution comparison**  
   - Low-res, predicted high-res, and ground truth  
-    | ![LR](assets/superresolution/lr_image.png) | ![Predicted](assets/superresolution/superResoluted.png) | ![HR](assets/superresolution/hr_image.png) |
+    | ![LR](/waleedAlzamil80.github.io/assets/deeplense/superresolution/lr_image.png) | ![Predicted](/waleedAlzamil80.github.io/assets/deeplense/superresolution/superResoluted.png) | ![HR](/waleedAlzamil80.github.io/assets/deeplense/superresolution/hr_image.png) |
     |------------|------------|-------------|
 
 ### 🚀 **Running the Code**  

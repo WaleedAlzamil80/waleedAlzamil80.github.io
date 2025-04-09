@@ -1,3 +1,10 @@
+---
+layout: single
+title: Real Time Violence Detection
+permalink: /projects/realtimeviolencedetection/
+author_profile: false
+---
+
 # Real Time Violence Detection using MobileNet and Bi-directional LSTM
 #### This repository is part of the Graduation Project for NTI Training -  AI and IoT DEY Initiative. 
 
