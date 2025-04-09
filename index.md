@@ -10,6 +10,13 @@ author_profile: true
 ![GitHub followers](https://img.shields.io/github/followers/WaleedAlzamil80?style=social)
 ![GitHub stars](https://img.shields.io/github/stars/WaleedAlzamil80?style=social)
 
+Welcome to my portfolio!
+
+📍 **Location**: Cairo, Egypt  
+📄 **[Download Resume](https://waleedalzamil80.github.io/resume.pdf)**  
+🔗 **[LinkedIn](https://linkedin.com/in/waleedalzamil80)**  
+💻 **[GitHub](https://github.com/WaleedAlzamil80)**
+
 <img src="assets/profile.jpg" alt="Profile" width="150" style="border-radius: 50%; margin-top: 10px;">
 
 ---

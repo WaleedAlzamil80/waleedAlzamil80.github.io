@@ -10,7 +10,7 @@ author:
   github: "WaleedAlzamil80"
   linkedin: "waleedalzamil80"
   resume: "https://waleedalzamil80.github.io/resume.pdf"
-  Location: Cairo, Egypt
+  Location: "Cairo, Egypt"
 
 # Theme settings
 remote_theme: "mmistakes/minimal-mistakes"
