@@ -13,12 +13,12 @@ Welcome to the Othello AI project! This project implements an AI to play the gam
 ### Screens
 
 1. The main screen is where you decide to play or end exit the game.
-![Main_Menu.png](/waleedAlzamil80.github.io/assets/othello/Main_Menu.png)
+![Main_Menu.png](/assets/othello/Main_Menu.png)
 2. Players screen is where each player select the algorithm
-![player1.png](/waleedAlzamil80.github.io/assets/othello/algo1.png)
-![player2.png](/waleedAlzamil80.github.io/assets/othello/algo2.png)
+![player1.png](/assets/othello/algo1.png)
+![player2.png](/assets/othello/algo2.png)
 3. Difficulty where we specify the difficulty of the algorithm
-![difficulty.png](/waleedAlzamil80.github.io/assets/othello/diff.png)
+![difficulty.png](/assets/othello/diff.png)
 4. Game screen is where the game is played and the Othello board is displayed. The board is an 8x8 grid where the game pieces are placed.
 You have the options to:
 - Pause the game
@@ -26,8 +26,8 @@ You have the options to:
 - Restart the game
 - Go back to the Main Menu
 
-![drawpng.png](/waleedAlzamil80.github.io/assets/othello/drawpng.png)
-![white.png](/waleedAlzamil80.github.io/assets/othello/Winner.png)
+![drawpng.png](/assets/othello/drawpng.png)
+![white.png](/assets/othello/Winner.png)
 
 
 ## Main Algorithms:

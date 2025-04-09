@@ -17,7 +17,7 @@ PointNet is a deep learning architecture designed for directly processing 3D poi
 - **Paper**: [PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation](https://arxiv.org/abs/1612.00593)
 - **Current Implementation**: The current version implements PointNet for 3D teeth segmentation, focusing on direct feature extraction from point clouds.
 
-![PointNet](/waleedAlzamil80.github.io/assets/3dmodel/PointNet/PointNet.png)
+![PointNet](/assets/3dmodel/PointNet/PointNet.png)
 
 ---
 
@@ -30,7 +30,7 @@ PointNet++ builds upon the foundation of PointNet by introducing hierarchical fe
   - Multi-scale grouping (MSG)
   - Multi-resolution grouping (MRG)
 
-![PointNet++](/waleedAlzamil80.github.io/assets/3dmodel/PointNet/PointNetpp.png)
+![PointNet++](/assets/3dmodel/PointNet/PointNetpp.png)
 
 ---
 
@@ -43,7 +43,7 @@ DynamicGraphCNN (DGCNN) is a graph-based neural network for 3D point cloud proce
   - Optimization for large-scale datasets
   - Improved memory efficiency
 
-![DynamicGraphCNN](/waleedAlzamil80.github.io/assets/3dmodel/Graphs/DynamicGraphCNN.png)
+![DynamicGraphCNN](/assets/3dmodel/Graphs/DynamicGraphCNN.png)
 
 ---
 
@@ -53,7 +53,7 @@ The Point Cloud Transformer adapts the transformer architecture for 3D point clo
 - **Paper**: [PCT: Point Cloud Transformer](https://arxiv.org/abs/2012.09688)
 - **Current Implementation**: PCT is successfully integrated, focusing on segmentation tasks with attention-based feature extraction.
 
-![PCT](/waleedAlzamil80.github.io/assets/3dmodel/transformers/PCT/PCTArchitecture.png)
+![PCT](/assets/3dmodel/transformers/PCT/PCTArchitecture.png)
 ---
 
 ### 5. Mining Point Cloud
@@ -62,7 +62,7 @@ This model explores techniques for data mining and feature extraction in point c
 - **Paper**: [Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling](https://arxiv.org/pdf/1712.06760)
 - **Current Implementation**: FoldingNet is implemented as a standalone feature extractor and has been used with the Spatial Transformer introduced in the PointNet paper.
 
-![Mining Point Cloud](/waleedAlzamil80.github.io/assets/3dmodel/Graphs/MiningPointCloud.png)
+![Mining Point Cloud](/assets/3dmodel/Graphs/MiningPointCloud.png)
 
 ---
 

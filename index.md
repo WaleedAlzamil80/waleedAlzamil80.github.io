@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Waleed Alzamil
+title: resume
 author_profile: true
 ---
 
@@ -22,7 +22,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 📧 **Email:** [waleedalzamil80@gmail.com](mailto:waleedalzamil80@gmail.com)  
 🔗 **LinkedIn:** [linkedin.com/in/waleedalzamil80](https://linkedin.com/in/waleedalzamil80){:target="_blank"}  
 🔗 **GitHub:** [github.com/WaleedAlzamil80](https://github.com/WaleedAlzamil80){:target="_blank"}
-
+📄 [Download Resume (PDF)](resume.pdf)
 ---
 
 ## 🧰 Skills
@@ -38,17 +38,13 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 ---
 
 ## 📚 Research & Publications
-
-- **Crown-Generation Part 01: 3D Teeth Segmentation** *(Jan 2025)*  
-- **Teeth Bleaching and Hollywood Smile - Proof of Concept Report** *(Dec 2024)*  
-- **RAG System for Test Case Generation** *(Feb 2024)*  
-- **Comparison of Optimization Algorithms** *(May 2023)*  
-- **Deep Convolutional Neural Networks for Image Classification** *(2023)*  
-- 📄 [Crown Generation - Part 1](publications/CrownGeneration_part_1.pdf)
-- 📄 [Milestone 1](publications/MileStone1.pdf)
-- 📄 [Milestone 2](publications/MileStone2.pdf)
+ 
+- 📄 [Crown Generation - Part 1 : 3D Teeth Segmentation](publications/CrownGeneration_part_1.pdf) *(Jan 2025)*  
+- 📄 **Teeth Bleaching and Hollywood Smile - Proof of Concept Report** *(Dec 2024)*
+- 📄 [RAG System for Test Case Generation](publications/rag.pdf) *(Feb 2024)*  
+- 📄 [Comparison of Optimization Algorithms](publications/MileStone1.pdf) *(May 2023)*  
+- 📄 [Deep Convolutional Neural Networks for Image Classification](publications/MileStone2.pdf) *(May 2023)*  
 - 📄 [EMG Report](publications/EMG_report.pdf)
-- 📄 [RAG Report](publications/rag.pdf)
 
 ---
 
@@ -164,12 +160,6 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 🚀 **Looking for opportunities in AI research, medical imaging, and generative modeling**.  
 Let’s collaborate on the future of deep learning and 3D intelligence.
-
----
-
-## 📄 Resume
-
-- [Download Resume (PDF)](resume.pdf)
 
 ---
 
