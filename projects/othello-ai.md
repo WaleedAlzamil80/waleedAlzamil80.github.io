@@ -128,30 +128,6 @@ You have the options to:
 | --lr             | Learning rate used during training. Default: 0.001                                                               |
 | --model_file     | Path to the saved model file. Default: "./Othello-AI/RL/SavedModels/model.pt"                                    |
 
-### How to generate games from Agent for future Training?
-1. Cloning the Repository
-
-```shell
-git clone https://github.com/WaleedAlzamil80/Othello-AI.git
-```
-2. Run the Following command
-
-```shell
-python Othello-AI/generate_eps.py --self_play 100
-```
-In case it takes too much reduce the number of games (self_play)
-
-3. The results will be found in the `results` folder then you can download the 3 numpy arrays corresponding to (State, Policy, Value)
-
-### How to Train with your custom dataset?
-```shell
-python training_eps.py --data_path ./path/to/custom_data --BatchSize 32 --lr 0.0001 --epochs 10
-```
-
-### How to learn?
-```shell
-python run.py --BatchSize 32 --lr 0.0001 --epochs 10 --self_play 1000 --search 1500 --iterations 10
-```
 
 ## Explian MCTs
 For more detailed documentation, see the [MCTs/README.md](MCTs/README.md).

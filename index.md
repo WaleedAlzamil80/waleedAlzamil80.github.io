@@ -1,6 +1,6 @@
 ---
 layout: home
-title: resume
+title: Home
 author_profile: true
 ---
 
@@ -17,12 +17,7 @@ author_profile: true
 ## 🧠 About Me
 
 I am a **Deep Learning Engineer** passionate about AI, optimization, and computational intelligence. My work spans research, model development, and AI applications across medical imaging, computer vision, NLP, and robotics.
-
-📍 **Location:** Cairo, Egypt  
-📧 **Email:** [waleedalzamil80@gmail.com](mailto:waleedalzamil80@gmail.com)  
-🔗 **LinkedIn:** [linkedin.com/in/waleedalzamil80](https://linkedin.com/in/waleedalzamil80){:target="_blank"}  
-🔗 **GitHub:** [github.com/WaleedAlzamil80](https://github.com/WaleedAlzamil80){:target="_blank"}
-📄 [Download Resume (PDF)](resume.pdf)
+ 
 ---
 
 ## 🧰 Skills
@@ -62,14 +57,14 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 ## 🚀 Projects
 
-### 🧬 DeepLense (GSoC 2025 – Vision Foundation Model)
+### 🔭 DeepLense (GSoC 2025 – Vision Foundation Model)
 **Goal**: Detect gravitational lenses using masked feature extraction & super-resolution.
 
 <!--img src="assets/deeplense.gif" alt="DeepLense Project" width="100%"-->
 
 - Implemented **Masked Autoencoders (MAE)** for feature extraction.
 - Achieved **99.67% AUC** and **29.62 dB PSNR**. [🔗 GitHub](https://github.com/WaleedAlzamil80/deeplense25){:target="_blank"}
-- 🔭 [DeepLense](projects/deeplense.md)
+- [DeepLense](projects/deeplense.md)
 
 ---
 
@@ -80,7 +75,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 - Used **FoldingNet, DGCNN**, and **Transformers**.
 - Focused on **3D object reconstruction** and accuracy. [🔗 GitHub](https://github.com/WaleedAlzamil80/3DModels){:target="_blank"}
-- 🦷 [Crown Generation](projects/crown.md)
+- [Crown Generation](projects/crown.md)
 
 ---
 
@@ -101,7 +96,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 - Implemented **Minimax & Alpha-Beta Pruning**.
 - Developed **RL agent** for strategy learning. [🔗 GitHub](https://github.com/WaleedAlzamil80/Othello-AI){:target="_blank"}
-- 🎮 [Othello AI](projects/othello-ai.md)
+- [Othello AI](projects/othello-ai.md)
 
 ---
 
@@ -115,14 +110,14 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 ---
 
-### 🎥 Real-Time Violence Detection
+### 🚨 Real-Time Violence Detection
 **Goal**: Detect violence in video streams using hybrid deep learning models.
 
 <!-- img src="assets/violence_detection.gif" alt="Violence Detection" width="100%"-->
 
 - Built **CNN-BiLSTM pipeline** for temporal analysis.
 - Tested on surveillance datasets.
-- 🚨 [Real-Time Violence Detection](projects/realtimeviolencedetection.md)
+- [Real-Time Violence Detection](projects/realtimeviolencedetection.md)
 
 ---
 
@@ -151,14 +146,12 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 - 🦷 [3D Teeth Segmentation & Crown Generation](https://github.com/WaleedAlzamil80/3DModels){:target="_blank"}  
 - 🔭 [DeepLense (GSoC 2025)](https://github.com/WaleedAlzamil80/deeplense25/){:target="_blank"}  
-- 🎮 [Othello AI Game](https://github.com/WaleedAlzamil80/Othello-AI){:target="_blank"}  
-- 🦾 [EMG Robotic Hand Control](https://github.com/WaleedAlzamil80/EMG_Synergy_project){:target="_blank"}
 
 ---
 
 ## 🎯 Career Goals
 
-🚀 **Looking for opportunities in AI research, medical imaging, and generative modeling**.  
+🚀 **Looking for opportunities in AI research, Computer vision, Robotics, medical imaging, and generative modeling**.  
 Let’s collaborate on the future of deep learning and 3D intelligence.
 
 ---

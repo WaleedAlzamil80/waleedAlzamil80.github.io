@@ -22,47 +22,6 @@ The test consists of two main parts:
 - **Samples for super-resolution**
    ![Sample Images](/assets/deeplense/superresolution/superRsample.png)
 
-### 📂 **Folder Structure**  
-```
-specific_test_06/
-│── models/                        # 📂 Model definitions & weights
-│   ├── mae.py                      # MAE model
-│   ├── classifier.py                # Classification model
-│   ├── super_resolution.py         # Super-Resolution model
-│   ├── checkpoints/                 # Trained weights
-│       ├── mae.pth
-│       ├── classifier.pth
-│       ├── super_resolution.pth
-│
-│── scripts/                        # 📂 Training & evaluation scripts NOTE the parameters here are hardcoded
-│   ├── train_mae.py                 # Train MAE
-│   ├── train_classifier.py          # Train classification model
-│   ├── train_superresolution.py           # Train super-resolution model
-│   ├── evaluate.py                  # Compute MSE, SSIM, PSNR, LPIPS # not created yet
-│   ├── infer.py                     # Run inference on new images # not ready
-│   ├── infer_01.py                  # Run inference on new images Classification # not ready
-│
-│── utils/                          # 📂 Helper functions
-│   ├── Dataset.py                    # Data loading & augmentation
-│   ├── metrics.py                    # SSIM, PSNR, LPIPS calculations
-│   ├── helpful.py                    # helpful functions that's used alot
-│   ├── vis.py                        # save plots like pca and tsne
-│   ├── extract_encoderPart.py        # take parts from the trained mae model to be used for fine-tuning models
-│
-│── /assets/deeplense/                        # 📂 Store evaluation results
-│   ├── mae/                                   # Images
-│   ├── classification/                        # Images
-│   ├── superresolution/                       # Images
-│
-│── notebooks/                      # 📂 Jupyter notebooks
-│   ├── mae_training.ipynb                     # Training MAE step-by-step
-│   ├── classification_training.ipynb          # Fine-tuning classifier
-│   ├── super_resolution_training.ipynb        # Fine-tuning super-resolution
-│
-│── requirements.txt                 # 📜 Dependencies
-│── README.md                         # 📜 Project overview
-│── .gitignore                        # 🚫 Ignore large files (checkpoints, datasets)
-```
 
 ### **Prepate Data for Masked Autoencoder (MAE) Pretraining**  
 
@@ -75,9 +34,8 @@ specific_test_06/
 
 - **Masked pathces and Visible patches**
 
-   | ![Masked Image](/assets/deeplense/mae/masked_patches.png) | ![EncoderInput](/assets/deeplense/mae/visible_patches.png) |
-   |------------|-------------|
-
+   - ![Masked Image](/assets/deeplense/mae/masked_patches.png)
+   - ![EncoderInput](/assets/deeplense/mae/visible_patches.png)
 
 ### 🛠 **Model and Approach**  
 #### **1️⃣ Masked Autoencoder (MAE) Pretraining**
@@ -98,7 +56,7 @@ specific_test_06/
 #### **3️⃣ Fine-Tuning for Super-Resolution**
 - **Loss Function:** Mean Squared Error (MSE)
 - **Batch Size:** *256*
-- **Evaluation Metrics:** MSE, SSIM, PSNR  
+- **Evaluation Metrics:** MSE, SSIM, PSNR
 - **Epochs:** *200*
 - **NOTE** The Decoder used here is not suitable for images and especially for super-resolution tasks. So we need more work on the architecture
 
@@ -110,13 +68,13 @@ Below are the evaluation results for each task:
   ![MAE Loss](/assets/deeplense/mae/MAE_Losses.png)  
 - **PCA and TSNE on the embedding**  
   - Hidder representation:  
-    | ![pca](/assets/deeplense/mae/pca_plot.png) | ![tsne](/assets/deeplense/mae/tsne_plot.png) |
-    |------------|------------|
+    - ![pca](/assets/deeplense/mae/pca_plot.png)
+    - ![tsne](/assets/deeplense/mae/tsne_plot.png)
 
 #### **2️⃣ Multi-Class Classification**  
 - **Accuracy & AUC Score over epochs**  
-    | ![Accuracy Metrics](/assets/deeplense/classification/Accuracies.png) | ![AUC Metrics](/assets/deeplense/classification/AUC.png) |
-    |------------|------------|
+    - ![Accuracy Metrics](/assets/deeplense/classification/Accuracies.png)
+    - ![AUC Metrics](/assets/deeplense/classification/AUC.png)
 
 - **Classification Report**
 ```
@@ -132,18 +90,18 @@ weighted avg       0.97      0.97      0.97      8911
 ```
 
 - **Confusion Matrix and ROC Curve**
-    | ![ROC Metrics](/assets/deeplense/classification/ROC_curve.png) | ![Confusion Matrix](/assets/deeplense/classification/confusion_matrix.png) |
-    |------------|------------|
+    - ![ROC Metrics](/assets/deeplense/classification/ROC_curve.png)
+    - ![Confusion Matrix](/assets/deeplense/classification/confusion_matrix.png)
 
 - **PCA & tsne plotting**
-    | ![PCA](/assets/deeplense/classification/pca_plot.png) | ![tsne](/assets/deeplense/classification/tsne_plot.png) |
-    |------------|------------|
+    - ![PCA](/assets/deeplense/classification/pca_plot.png)
+    - ![tsne](/assets/deeplense/classification/tsne_plot.png)
 
 #### **3️⃣ Super-Resolution**
 - **MSE as a loss, SSIM, PSNR over epochs**
-      | ![SSIM](/assets/deeplense/superresolution/SSIM.png) | ![PSNR](/assets/deeplense/superresolution/PSNR.png) |
-    |------------|------------|
-  ![MSE](/assets/deeplense/superresolution/MAE_Losses.png)
+      - ![SSIM](/assets/deeplense/superresolution/SSIM.png)
+      - ![PSNR](/assets/deeplense/superresolution/PSNR.png)
+      - ![MSE](/assets/deeplense/superresolution/MAE_Losses.png)
 
 - **Final Metrics** *these results from best SSIM model **superresolution_SSIM** and it's very close to **superresolution_PSNR***
      - Final Validation MSE: 0.002293
@@ -168,12 +126,3 @@ weighted avg       0.97      0.97      0.97      8911
 - **Super-resolution comparison**  
   - Low-res, predicted high-res, and ground truth  
     | ![LR](/assets/deeplense/superresolution/lr_image.png) | ![Predicted](/assets/deeplense/superresolution/superResoluted.png) | ![HR](/assets/deeplense/superresolution/hr_image.png) |
-    |------------|------------|-------------|
-
-### 🚀 **Running the Code**  
-1. Open any `*.ipynb` in Jupyter Notebook.
-2. Run all cells to train the models.
-3. Model checkpoints will be saved in `*.pth`.
-
-### 📬 **Submission Details**
-This task is part of my DeepLense GSoC 2025 submission.

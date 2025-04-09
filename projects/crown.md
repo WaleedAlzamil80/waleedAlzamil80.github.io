@@ -63,15 +63,3 @@ This model explores techniques for data mining and feature extraction in point c
 - **Current Implementation**: FoldingNet is implemented as a standalone feature extractor and has been used with the Spatial Transformer introduced in the PointNet paper.
 
 ![Mining Point Cloud](/assets/3dmodel/Graphs/MiningPointCloud.png)
-
----
-
-## Usage  
-This repository provides a unified interface for all implemented models. You can easily switch between models and tasks using the factory pattern.
-
-Import the desired model in your script:  
-```python  
-from factories.model_factory import get_model
-
-# Example: Load DynamicGraphCNN for segmentation task with 33 output classes
-model = get_model("DynamicGraphCNN", "segmentation", 33)
