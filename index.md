@@ -62,8 +62,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 <!--img src="assets/deeplense.gif" alt="DeepLense Project" width="100%"-->
 
 - Implemented **Masked Autoencoders (MAE)** for feature extraction.
-- Achieved **99.67% AUC** and **29.62 dB PSNR**.
-- [🔗 GitHub](https://github.com/WaleedAlzamil80/deeplense25){:target="_blank"}
+- Achieved **99.67% AUC** and **29.62 dB PSNR**. [🔗 GitHub](https://github.com/WaleedAlzamil80/deeplense25){:target="_blank"}
 
 ---
 
@@ -73,8 +72,7 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 <!--img src="assets/3dcrown_pipeline.png" alt="3D Crown Generation" width="100%"-->
 
 - Used **FoldingNet, DGCNN**, and **Transformers**.
-- Focused on **3D object reconstruction** and accuracy.
-- [🔗 GitHub](https://github.com/WaleedAlzamil80/3DModels){:target="_blank"}
+- Focused on **3D object reconstruction** and accuracy. [🔗 GitHub](https://github.com/WaleedAlzamil80/3DModels){:target="_blank"}
 
 ---
 
@@ -94,8 +92,17 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 <!--img src="assets/othello_ai.png" alt="Othello AI" width="100%"-->
 
 - Implemented **Minimax & Alpha-Beta Pruning**.
-- Developed **RL agent** for strategy learning.  
-- [🔗 GitHub](https://github.com/WaleedAlzamil80/Othello-AI){:target="_blank"}
+- Developed **RL agent** for strategy learning. [🔗 GitHub](https://github.com/WaleedAlzamil80/Othello-AI){:target="_blank"}
+
+---
+
+### 🦾 Synergy EMGs Proportional Control
+**Goal**: Predict robotic hand motion from EMG data.
+
+<!-- img src="assets/emg_hand.gif" alt="EMG Project" width="100%"-->
+
+- Trained regression models on **real EMG sensor signals**.
+- Enabled real-time robotic actuation. [🔗 GitHub](https://github.com/WaleedAlzamil80/EMG_Synergy_project){:target="_blank"}
 
 ---
 
@@ -106,17 +113,6 @@ I am a **Deep Learning Engineer** passionate about AI, optimization, and computa
 
 - Built **CNN-BiLSTM pipeline** for temporal analysis.
 - Tested on surveillance datasets.
-
----
-
-### 🦾 Synergy EMGs Proportional Control
-**Goal**: Predict robotic hand motion from EMG data.
-
-<!-- img src="assets/emg_hand.gif" alt="EMG Project" width="100%"-->
-
-- Trained regression models on **real EMG sensor signals**.
-- Enabled real-time robotic actuation.
-- [🔗 GitHub](https://github.com/WaleedAlzamil80/EMG_Synergy_project){:target="_blank"}
 
 ---
 
