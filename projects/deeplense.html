@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specific Test VI - Foundation Model</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h2, h3, h4, h5 {
+      color: #2c3e50;
+    }
+    code, pre {
+      background: #eee;
+      padding: 0.5em;
+      display: block;
+      white-space: pre-wrap;
+      border-left: 4px solid #3498db;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    td, th {
+      padding: 0.5rem;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+    .img-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .img-row img {
+      flex: 1 1 auto;
+      max-width: 30%;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Specific Test VI - Foundation Model</h2>
+  <p>This folder contains my solution for <strong>Specific Test VI: Foundation Model</strong> of the DeepLense GSoC 2025 project. The task involves pretraining a <strong>Masked Autoencoder (MAE)</strong> on strong lensing images and fine-tuning it for <strong>multi-class classification</strong> and <strong>super-resolution</strong> using <strong>PyTorch</strong>.</p>
+
+  <h3>📌 Task Overview</h3>
+  <ol>
+    <li><strong>Pretraining a Masked Autoencoder (MAE)</strong> on <strong>no_sub</strong> samples to learn meaningful feature representations.</li>
+    <li>Fine-tuning the MAE:
+      <ul>
+        <li>For <strong>multi-class classification</strong> (distinguishing between no_sub, cdm, and axion).</li>
+        <li>For <strong>super-resolution</strong> (upscaling low-resolution images using high-resolution ground truths).</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h4>📷 Sample Images for Each Task</h4>
+  <p><strong>Samples for multi-class classification</strong></p>
+  <img src="../assets/classification/classSample.png" alt="Classification Sample">
+
+  <p><strong>Samples for super-resolution</strong></p>
+  <img src="../assets/superresolution/superRsample.png" alt="Super-resolution Sample">
+
+  <h3>Prepare Data for Masked Autoencoder (MAE) Pretraining</h3>
+  <h4>Input for Encoder</h4>
+  <p><strong>Sample for splitted-image</strong></p>
+  <img src="../assets/mae/splitted_image.png" alt="Splitted Image">
+
+  <p><strong>Sample for masked-image</strong></p>
+  <img src="../assets/mae/masked_image.png" alt="Masked Image">
+
+  <h4>Masked patches and Visible patches</h4>
+  <table>
+    <tr>
+      <td><img src="../assets/mae/masked_patches.png" alt="Masked Patches"></td>
+      <td><img src="../assets/mae/visible_patches.png" alt="Visible Patches"></td>
+    </tr>
+  </table>
+
+  <h3>🛠 Model and Approach</h3>
+  <h4>1️⃣ Masked Autoencoder (MAE) Pretraining</h4>
+  <ul>
+    <li><strong>Goal:</strong> Learn a feature representation of strong lensing images.</li>
+    <li><strong>Architecture:</strong> Vision Transformer (ViT) backbone with a reconstruction head.</li>
+    <li><strong>Pretraining Loss:</strong> Mean Squared Error (MSE)</li>
+    <li><strong>Optimizer:</strong> AdamW</li>
+    <li><strong>Batch Size:</strong> 256</li>
+    <li><strong>Epochs:</strong> 250</li>
+  </ul>
+
+  <h4>2️⃣ Fine-Tuning for Multi-Class Classification</h4>
+  <ul>
+    <li><strong>Loss Function:</strong> Cross-Entropy Loss</li>
+    <li><strong>Optimizer:</strong> AdamW</li>
+    <li><strong>Batch Size:</strong> 256</li>
+    <li><strong>Evaluation Metrics:</strong> AUC Score, Accuracy</li>
+    <li><strong>Epochs:</strong> 250</li>
+  </ul>
+
+  <h4>3️⃣ Fine-Tuning for Super-Resolution</h4>
+  <ul>
+    <li><strong>Loss Function:</strong> Mean Squared Error (MSE)</li>
+    <li><strong>Batch Size:</strong> 256</li>
+    <li><strong>Evaluation Metrics:</strong> MSE, SSIM, PSNR</li>
+    <li><strong>Epochs:</strong> 200</li>
+    <li><strong>NOTE:</strong> The decoder used here is not suitable for super-resolution tasks. Architectural improvements are needed.</li>
+  </ul>
+
+  <h3>📊 Results</h3>
+  <h4>1️⃣ MAE Pretraining</h4>
+  <img src="../assets/mae/MAE_Losses.png" alt="MAE Loss">
+  <table>
+    <tr>
+      <td><img src="../assets/mae/pca_plot.png" alt="PCA Plot"></td>
+      <td><img src="../assets/mae/tsne_plot.png" alt="TSNE Plot"></td>
+    </tr>
+  </table>
+
+  <h4>2️⃣ Multi-Class Classification</h4>
+  <table>
+    <tr>
+      <td><img src="../assets/classification/Accuracies.png" alt="Accuracy"></td>
+      <td><img src="../assets/classification/AUC.png" alt="AUC"></td>
+    </tr>
+  </table>
+
+  <h5>Classification Report</h5>
+  <pre>
+              precision    recall  f1-score   support
+
+      no_sub       0.97      0.99      0.98      2945
+       axion       0.98      0.97      0.97      2990
+         cdm       0.97      0.95      0.96      2976
+
+    accuracy                           0.97      8911
+   macro avg       0.97      0.97      0.97      8911
+weighted avg       0.97      0.97      0.97      8911
+  </pre>
+  <table>
+    <tr>
+      <td><img src="../assets/classification/ROC_curve.png" alt="ROC Curve"></td>
+      <td><img src="../assets/classification/confusion_matrix.png" alt="Confusion Matrix"></td>
+    </tr>
+    <tr>
+      <td><img src="../assets/classification/pca_plot.png" alt="PCA"></td>
+      <td><img src="../assets/classification/tsne_plot.png" alt="t-SNE"></td>
+    </tr>
+  </table>
+
+  <h4>3️⃣ Super-Resolution</h4>
+  <table>
+    <tr>
+      <td><img src="../assets/superresolution/SSIM.png" alt="SSIM"></td>
+      <td><img src="../assets/superresolution/PSNR.png" alt="PSNR"></td>
+    </tr>
+  </table>
+  <img src="../assets/superresolution/MAE_Losses.png" alt="MSE">
+
+  <h5>Final Metrics</h5>
+  <ul>
+    <li>Final Validation MSE: 0.002293</li>
+    <li>Final Validation PSNR: 29.62</li>
+    <li>Final Validation SSIM: 0.9190</li>
+  </ul>
+
+  <h5>Interpretation</h5>
+  <ul>
+    <li>Lower <strong>MSE</strong> → Better reconstruction (less error).</li>
+    <li>Higher <strong>PSNR</strong> → Better quality. (30–50 dB → Good | 20–30 → Moderate | <20 → Poor)</li>
+    <li><strong>SSIM = 1</strong> → Identical images. SSIM ≈ 0 → No structural similarity.</li>
+    <li><strong>SSIM</strong> aligns more with human perception than MSE or PSNR.</li>
+  </ul>
+
+  <h5>Super-resolution Comparison</h5>
+  <table>
+    <tr>
+      <td><img src="../assets/superresolution/lr_image.png" alt="Low-Res"></td>
+      <td><img src="../assets/superresolution/superResoluted.png" alt="Predicted High-Res"></td>
+      <td><img src="../assets/superresolution/hr_image.png" alt="High-Res"></td>
+    </tr>
+  </table>
+
+</body>
+</html>
