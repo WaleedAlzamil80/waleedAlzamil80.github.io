@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crown Generation - 3D Point Cloud Models</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fdfdfd;
+      color: #2c3e50;
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+      line-height: 1.8;
+    }
+    h1, h2, h3 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3em;
+    }
+    h3 {
+      margin-top: 2em;
+    }
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 1.2em;
+    }
+    hr {
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Crown Generation - 3D Point Cloud Models</h1>
+  <p>This repository implements various deep learning models for processing 3D point clouds, focusing on tasks like classification and segmentation. Below is a summary of the models implemented and planned for this repository.</p>
+  
+  <hr/>
+
+  <h3>1. PointNet</h3>
+  <p>
+    <strong>PointNet</strong> is a deep learning architecture designed for directly processing 3D point clouds.
+    It uses MLPs and symmetric functions to capture both local and global features from 3D data.
+    This architecture is well-suited for tasks like 3D classification and segmentation.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1612.00593" target="_blank">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</a></li>
+    <li><strong>Current Implementation:</strong> Implemented for 3D teeth segmentation, focusing on direct feature extraction from point clouds.</li>
+  </ul>
+  <img src="/assets/3dmodel/PointNet/PointNet.png" alt="PointNet Architecture" />
+
+  <hr/>
+
+  <h3>2. PointNet++</h3>
+  <p>
+    <strong>PointNet++</strong> builds upon PointNet by introducing hierarchical feature learning to capture features at multiple scales.
+    It uses set abstraction layers and sampling techniques to represent fine-grained local structures.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1706.02413" target="_blank">PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</a></li>
+    <li><strong>Current Implementation:</strong> Integrated for robust 3D segmentation and classification with enhanced local feature extraction.</li>
+    <li><strong>Future Enhancements:</strong>
+      <ul>
+        <li>Multi-scale grouping (MSG)</li>
+        <li>Multi-resolution grouping (MRG)</li>
+      </ul>
+    </li>
+  </ul>
+  <img src="/assets/3dmodel/PointNet/PointNetpp.png" alt="PointNet++ Architecture" />
+
+  <hr/>
+
+  <h3>3. DynamicGraphCNN (DGCNN)</h3>
+  <p>
+    <strong>DynamicGraphCNN</strong> (DGCNN) is a graph-based network for point cloud processing. It dynamically constructs a graph in feature space and uses edge convolutions to learn geometric relationships between neighboring points.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1801.07829" target="_blank">Dynamic Graph CNN for Learning on Point Clouds</a></li>
+    <li><strong>Current Implementation:</strong> Applied to segmentation using dynamic graphs and edge convolutions.</li>
+    <li><strong>Future Enhancements:</strong>
+      <ul>
+        <li>Optimization for large-scale datasets</li>
+        <li>Improved memory efficiency</li>
+      </ul>
+    </li>
+  </ul>
+  <img src="/assets/3dmodel/Graphs/DynamicGraphCNN.png" alt="DynamicGraphCNN" />
+
+  <hr/>
+
+  <h3>4. Point Cloud Transformer (PCT)</h3>
+  <p>
+    <strong>PCT</strong> adapts the transformer architecture for 3D point clouds to enable global context modeling through self-attention mechanisms.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/2012.09688" target="_blank">PCT: Point Cloud Transformer</a></li>
+    <li><strong>Current Implementation:</strong> Integrated for segmentation tasks using attention-based feature extraction.</li>
+  </ul>
+  <img src="/assets/3dmodel/transformers/PCT/PCTArchitecture.png" alt="PCT Architecture" />
+
+  <hr/>
+
+  <h3>5. Mining Point Cloud</h3>
+  <p>
+    This module explores feature mining techniques in point clouds for improved segmentation/classification,
+    including data augmentation, denoising, and sampling strategies.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/pdf/1712.06760" target="_blank">Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling</a></li>
+    <li><strong>Current Implementation:</strong> FoldingNet is used as a standalone feature extractor and integrated with the Spatial Transformer from the PointNet architecture.</li>
+  </ul>
+  <img src="/assets/3dmodel/Graphs/MiningPointCloud.png" alt="Mining Point Cloud" />
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Violence Detection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px auto;
+      max-width: 900px;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h2, h3, h4, h5 {
+      color: #2c3e50;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    code, pre {
+      background: #eee;
+      padding: 0.5em;
+      display: block;
+      white-space: pre-wrap;
+      border-left: 4px solid #3498db;
+    }
+    a {
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Real-Time Violence Detection using MobileNet and Bi-directional LSTM</h2>
+  <h4>This repository is part of the Graduation Project for NTI Training - AI and IoT DEY Initiative.</h4>
+
+  <h3>📌 Project Overview</h3>
+  <p>
+    In this work, we proposed a real-time violence detection system based on deep learning techniques.
+    The system uses a <strong>MobileNetV2</strong> pretrained CNN as a spatial feature extractor and a <strong>Bidirectional LSTM</strong> to learn temporal relations across video frames.
+    Our primary focus was on three factors:
+  </p>
+  <ul>
+    <li>Overall generality</li>
+    <li>High accuracy</li>
+    <li>Fast response time</li>
+  </ul>
+  <p>
+    The final model achieved approximately <strong>97% accuracy</strong> and operated at <strong>16 frames per second</strong>.
+  </p>
+  <img src="https://user-images.githubusercontent.com/76521677/192987124-6ab45fd6-aef9-4359-a795-c2bbebec674f.png" alt="Model Diagram" />
+
+  <h3>🧪 Experiments</h3>
+  <p>We implemented two prediction functions to evaluate our model on video streams:</p>
+
+  <h4>🎥 Frame-by-Frame Prediction</h4>
+  <p>In this mode, the model processes each frame of the video individually and classifies it as violent or non-violent.</p>
+  <img src="https://user-images.githubusercontent.com/76521677/192982850-07593c8d-a674-4f2f-a80d-924ae318a9d7.gif" alt="Violence Detection Example - Violent" />
+  <img src="https://user-images.githubusercontent.com/76521677/192983491-64b20a82-326c-48cb-8932-8e59f8ccdbcc.gif" alt="Violence Detection Example - NonViolent" />
+
+  <h4>🎬 Whole-Video Prediction</h4>
+  <p>The second mode performs a prediction on the entire video clip as a whole, considering temporal patterns across the full video sequence.</p>
+  <img src="https://user-images.githubusercontent.com/76521677/192984158-6b942c47-a0a3-409a-9b57-5795b3e548ad.png" alt="Whole Video Prediction Result 1" />
+  <img src="https://user-images.githubusercontent.com/76521677/192984193-2a0e11e5-6b2a-4b40-81bc-2227d52853c5.png" alt="Whole Video Prediction Result 2" />
+
+  <h3>✅ Conclusion</h3>
+  <p>
+    Our proposed <strong>MobileNetV2-BiLSTM</strong> variant achieved the best results for the dataset used in this project.
+    While the model performs exceptionally well, it still requires validation on more standard datasets, especially for:
+  </p>
+  <ul>
+    <li>Many-to-many and one-to-many violent activity scenarios</li>
+    <li>Scenes involving weapons or complex crowd dynamics</li>
+  </ul>
+
+  <h3>📚 References</h3>
+  <p>
+    CNN-BiLSTM Model for Violence Detection in Smart Surveillance — 
+    <a href="https://link.springer.com/article/10.1007/s42979-020-00207-x#Sec15" target="_blank">Read the Paper</a>
+  </p>
+
+</body>
+</html>

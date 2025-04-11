@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Othello AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px auto;
+      max-width: 900px;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h2, h3, h4, h5 {
+      color: #2c3e50;
+    }
+    code, pre {
+      background: #eee;
+      padding: 0.5em;
+      display: block;
+      white-space: pre-wrap;
+      border-left: 4px solid #3498db;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .img-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .img-row img {
+      flex: 1 1 auto;
+      max-width: 30%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    td, th {
+      padding: 0.5rem;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎮 Othello AI</h2>
+  <p>Welcome to the <strong>Othello AI</strong> project! This project implements an artificial intelligence agent to play the classic game of <strong>Othello</strong> (also known as <strong>Reversi</strong>) with a graphical user interface (GUI).</p>
+  
+  <p>The AI supports multiple difficulty levels and algorithms including <strong>MinMax</strong> and <strong>Monte Carlo Tree Search (MCTS)</strong>, allowing users to play against different levels of strategic intelligence.</p>
+
+  <h3>🖥️ GUI Overview</h3>
+
+  <h4>1️⃣ Main Menu</h4>
+  <p>This is the starting screen where you can choose to play the game or exit.</p>
+  <img src="/assets/othello/Main_Menu.png" alt="Main Menu">
+
+  <h4>2️⃣ Player Algorithm Selection</h4>
+  <p>Each player can choose their preferred algorithm for gameplay:</p>
+  <div class="img-row">
+    <img src="/assets/othello/algo1.png" alt="Player 1 Algorithm">
+    <img src="/assets/othello/algo2.png" alt="Player 2 Algorithm">
+  </div>
+
+  <h4>3️⃣ Difficulty Selection</h4>
+  <p>Here you can specify the difficulty level for the chosen algorithm.</p>
+  <img src="/assets/othello/diff.png" alt="Difficulty Selection">
+
+  <h4>4️⃣ Game Screen</h4>
+  <p>The main game board where players compete against each other using the AI.</p>
+  <p><em>(Additional screenshot or description can go here if available.)</em></p>
+
+  <h3>🧠 Algorithms Implemented</h3>
+
+  <h4>🔸 MinMax Algorithm</h4>
+  <ul>
+    <li>Explores all possible moves up to a certain depth.</li>
+    <li>Uses a heuristic evaluation function to assign scores.</li>
+    <li>Performs backtracking to find the optimal move.</li>
+    <li>Supported with optional alpha-beta pruning for efficiency.</li>
+  </ul>
+
+  <h4>🔸 Monte Carlo Tree Search (MCTS)</h4>
+  <ul>
+    <li>Simulates many random playouts to evaluate moves.</li>
+    <li>Balances exploration and exploitation using UCB1.</li>
+    <li>Performs selection, expansion, simulation, and backpropagation.</li>
+    <li>Particularly powerful with time-limited decision making.</li>
+  </ul>
+
+  <h3>⚙️ Features</h3>
+  <ul>
+    <li>Interactive GUI using <strong>Pygame</strong>.</li>
+    <li>Support for human vs AI, AI vs AI, and human vs human games.</li>
+    <li>Flexible algorithm and difficulty settings per player.</li>
+    <li>Real-time board update and move highlighting.</li>
+  </ul>
+
+</body>
+</html>
