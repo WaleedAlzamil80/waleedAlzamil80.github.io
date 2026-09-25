@@ -1,50 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crown Generation - 3D Point Cloud Models</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fdfdfd;
-      color: #2c3e50;
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem;
-      line-height: 1.8;
-    }
-    h1, h2, h3 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    h3 {
-      margin-top: 2em;
-    }
-    img {
-      max-width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      margin: 1rem 0;
-    }
-    a {
-      color: #2980b9;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      padding-left: 1.2em;
-    }
-    hr {
-      margin: 2rem 0;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crown Generation - 3D Point Cloud Models</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body>
 
-  <h1>Crown Generation - 3D Point Cloud Models</h1>
+<header class="site-header">
+  <a class="mark" href="../index.html">Waleed Alzamil</a>
+  <nav>
+    <a href="../index.html#projects">← Back to portfolio</a>
+  </nav>
+</header>
+
+<div class="doc-page">
+<h1>Crown Generation - 3D Point Cloud Models</h1>
   <p>This repository implements various deep learning models for processing 3D point clouds, focusing on tasks like classification and segmentation. Below is a summary of the models implemented and planned for this repository.</p>
   
   <hr/>
@@ -59,7 +35,7 @@
     <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1612.00593" target="_blank">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</a></li>
     <li><strong>Current Implementation:</strong> Implemented for 3D teeth segmentation, focusing on direct feature extraction from point clouds.</li>
   </ul>
-  <img src="/assets/3dmodel/PointNet/PointNet.png" alt="PointNet Architecture" />
+  <img src="../assets/3dmodel/PointNet/PointNet.png" alt="PointNet Architecture" />
 
   <hr/>
 
@@ -78,7 +54,7 @@
       </ul>
     </li>
   </ul>
-  <img src="/assets/3dmodel/PointNet/PointNetpp.png" alt="PointNet++ Architecture" />
+  <img src="../assets/3dmodel/PointNet/PointNetpp.png" alt="PointNet++ Architecture" />
 
   <hr/>
 
@@ -96,7 +72,7 @@
       </ul>
     </li>
   </ul>
-  <img src="/assets/3dmodel/Graphs/DynamicGraphCNN.png" alt="DynamicGraphCNN" />
+  <img src="../assets/3dmodel/Graphs/DynamicGraphCNN.png" alt="DynamicGraphCNN" />
 
   <hr/>
 
@@ -108,7 +84,7 @@
     <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/2012.09688" target="_blank">PCT: Point Cloud Transformer</a></li>
     <li><strong>Current Implementation:</strong> Integrated for segmentation tasks using attention-based feature extraction.</li>
   </ul>
-  <img src="/assets/3dmodel/transformers/PCT/PCTArchitecture.png" alt="PCT Architecture" />
+  <img src="../assets/3dmodel/transformers/PCT/PCTArchitecture.png" alt="PCT Architecture" />
 
   <hr/>
 
@@ -121,7 +97,8 @@
     <li><strong>Paper:</strong> <a href="https://arxiv.org/pdf/1712.06760" target="_blank">Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling</a></li>
     <li><strong>Current Implementation:</strong> FoldingNet is used as a standalone feature extractor and integrated with the Spatial Transformer from the PointNet architecture.</li>
   </ul>
-  <img src="/assets/3dmodel/Graphs/MiningPointCloud.png" alt="Mining Point Cloud" />
+  <img src="../assets/3dmodel/Graphs/MiningPointCloud.png" alt="Mining Point Cloud" />
+</div>
 
 </body>
 </html>

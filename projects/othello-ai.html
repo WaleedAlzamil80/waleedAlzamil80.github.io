@@ -1,58 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Othello AI</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 20px auto;
-      max-width: 900px;
-      padding: 2rem;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    h2, h3, h4, h5 {
-      color: #2c3e50;
-    }
-    code, pre {
-      background: #eee;
-      padding: 0.5em;
-      display: block;
-      white-space: pre-wrap;
-      border-left: 4px solid #3498db;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-    .img-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .img-row img {
-      flex: 1 1 auto;
-      max-width: 30%;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-    td, th {
-      padding: 0.5rem;
-      text-align: center;
-      border: 1px solid #ccc;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Othello AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body>
 
-  <h2>🎮 Othello AI</h2>
+<header class="site-header">
+  <a class="mark" href="../index.html">Waleed Alzamil</a>
+  <nav>
+    <a href="../index.html#projects">← Back to portfolio</a>
+  </nav>
+</header>
+
+<div class="doc-page">
+<h2>🎮 Othello AI</h2>
   <p>Welcome to the <strong>Othello AI</strong> project! This project implements an artificial intelligence agent to play the classic game of <strong>Othello</strong> (also known as <strong>Reversi</strong>) with a graphical user interface (GUI).</p>
   
   <p>The AI supports multiple difficulty levels and algorithms including <strong>MinMax</strong> and <strong>Monte Carlo Tree Search (MCTS)</strong>, allowing users to play against different levels of strategic intelligence.</p>
@@ -61,18 +29,18 @@
 
   <h4>1️⃣ Main Menu</h4>
   <p>This is the starting screen where you can choose to play the game or exit.</p>
-  <img src="/assets/othello/Main_Menu.png" alt="Main Menu">
+  <img src="../assets/othello/Main_Menu.png" alt="Main Menu">
 
   <h4>2️⃣ Player Algorithm Selection</h4>
   <p>Each player can choose their preferred algorithm for gameplay:</p>
   <div class="img-row">
-    <img src="/assets/othello/algo1.png" alt="Player 1 Algorithm">
-    <img src="/assets/othello/algo2.png" alt="Player 2 Algorithm">
+    <img src="../assets/othello/algo1.png" alt="Player 1 Algorithm">
+    <img src="../assets/othello/algo2.png" alt="Player 2 Algorithm">
   </div>
 
   <h4>3️⃣ Difficulty Selection</h4>
   <p>Here you can specify the difficulty level for the chosen algorithm.</p>
-  <img src="/assets/othello/diff.png" alt="Difficulty Selection">
+  <img src="../assets/othello/diff.png" alt="Difficulty Selection">
 
   <h4>4️⃣ Game Screen</h4>
   <p>The main game board where players compete against each other using the AI.</p>
@@ -103,6 +71,7 @@
     <li>Flexible algorithm and difficulty settings per player.</li>
     <li>Real-time board update and move highlighting.</li>
   </ul>
+</div>
 
 </body>
 </html>
