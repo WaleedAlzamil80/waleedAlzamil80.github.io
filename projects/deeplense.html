@@ -1,93 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Masked autoencoder pretraining, classification, and super-resolution experiments on simulated gravitational-lensing images.">
-  <title>DeepLense | Waleed Khalid Alzamil</title>
-  <link rel="stylesheet" href="../assets/css/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specific Test VI - Foundation Model</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <main class="project-shell" id="main">
-    <div class="project-topline">
-      <a class="wordmark" href="../index.html">WKA / AI FOR SCIENCE</a>
-      <a class="back-link" href="../index.html#research">Back to selected work</a>
-    </div>
-    <header class="project-hero">
-      <p class="eyebrow">Scientific imaging · DeepLense GSoC 2025</p>
-      <h1>Learning representations of gravitational lenses.</h1>
-      <p class="project-lede">A masked autoencoder pipeline for strong-lensing images, followed by downstream experiments in multi-class classification and super-resolution.</p>
-      <p><a class="text-link" href="https://github.com/WaleedAlzamil80/deeplense25" target="_blank" rel="noopener noreferrer">View project repository</a></p>
-    </header>
 
-    <section class="project-section" aria-labelledby="question-title">
-      <h2 id="question-title">Scientific question</h2>
-      <p>Can a model learn useful visual representations from unlabeled strong-lensing images, and can those representations support related classification and image-reconstruction tasks?</p>
-      <div class="project-grid">
-        <figure class="project-figure dark">
-          <img src="../assets/deeplense/classification/classSample.png" alt="Examples of simulated gravitational-lensing images from three classes" loading="lazy">
-          <figcaption>Representative images from the classification task.</figcaption>
-        </figure>
-        <figure class="project-figure dark">
-          <img src="../assets/deeplense/superresolution/superRsample.png" alt="Low- and high-resolution gravitational-lensing image examples" loading="lazy">
-          <figcaption>Example inputs and targets for super-resolution.</figcaption>
-        </figure>
-      </div>
-    </section>
+<header class="site-header">
+  <a class="mark" href="../index.html">Waleed Alzamil</a>
+  <nav>
+    <a href="../index.html#projects">← Back to portfolio</a>
+  </nav>
+</header>
 
-    <section class="project-section" aria-labelledby="approach-title">
-      <h2 id="approach-title">Approach</h2>
-      <ol>
-        <li>Pretrained a Vision Transformer masked autoencoder on no-substructure samples, reconstructing masked image patches with mean squared error.</li>
-        <li>Fine-tuned the learned encoder for multi-class classification across no_sub, axion, and cdm image classes.</li>
-        <li>Evaluated a super-resolution task using low-resolution inputs and high-resolution targets, reporting MSE, PSNR, and SSIM.</li>
-      </ol>
-      <div class="project-grid">
-        <figure class="project-figure">
-          <img src="../assets/deeplense/mae/masked_image.png" alt="Gravitational-lensing image with masked patches for autoencoder pretraining" loading="lazy">
-          <figcaption>Masked image prepared for encoder and reconstruction training.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="../assets/deeplense/mae/visible_patches.png" alt="Visible image patches retained as masked autoencoder input" loading="lazy">
-          <figcaption>Visible patches supplied to the encoder.</figcaption>
-        </figure>
-      </div>
-    </section>
+<div class="doc-page">
+<h2>Specific Test VI - Foundation Model</h2>
+  <p>This folder contains my solution for <strong>Specific Test VI: Foundation Model</strong> of the DeepLense GSoC 2025 project. The task involves pretraining a <strong>Masked Autoencoder (MAE)</strong> on strong lensing images and fine-tuning it for <strong>multi-class classification</strong> and <strong>super-resolution</strong> using <strong>PyTorch</strong>.</p>
 
-    <section class="project-section" aria-labelledby="results-title">
-      <h2 id="results-title">Results in the report</h2>
-      <p>The classification report records approximately 97% accuracy on the reported evaluation set. For super-resolution, the report records the following final validation metrics:</p>
-      <div class="metric-list" aria-label="Reported super-resolution validation metrics">
-        <div class="metric"><strong>29.62 dB</strong><span>Validation PSNR</span></div>
-        <div class="metric"><strong>0.9190</strong><span>Validation SSIM</span></div>
-        <div class="metric"><strong>0.002293</strong><span>Validation MSE</span></div>
-      </div>
-      <p class="project-callout space-top-lg">The project report notes that the reconstruction decoder was not yet well suited to super-resolution; these results are an experimental baseline, not a final architecture claim.</p>
-    </section>
+  <h3>📌 Task Overview</h3>
+  <ol>
+    <li><strong>Pretraining a Masked Autoencoder (MAE)</strong> on <strong>no_sub</strong> samples to learn meaningful feature representations.</li>
+    <li>Fine-tuning the MAE:
+      <ul>
+        <li>For <strong>multi-class classification</strong> (distinguishing between no_sub, cdm, and axion).</li>
+        <li>For <strong>super-resolution</strong> (upscaling low-resolution images using high-resolution ground truths).</li>
+      </ul>
+    </li>
+  </ol>
 
-    <section class="project-section" aria-labelledby="classification-title">
-      <h2 id="classification-title">Classification evaluation</h2>
-      <div class="project-grid">
-        <figure class="project-figure">
-          <img src="../assets/deeplense/classification/ROC_curve.png" alt="One-versus-rest ROC curves for the three gravitational-lens classes" loading="lazy">
-          <figcaption>ROC curves from the classification evaluation.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="../assets/deeplense/classification/confusion_matrix.png" alt="Confusion matrix for three-class gravitational-lens classification" loading="lazy">
-          <figcaption>Confusion matrix for the no_sub, axion, and cdm classes.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="../assets/deeplense/classification/Accuracies.png" alt="Training and validation accuracy across classification epochs" loading="lazy">
-          <figcaption>Training and validation accuracy over epochs.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="../assets/deeplense/classification/AUC.png" alt="Training and validation area under the curve across epochs" loading="lazy">
-          <figcaption>Training and validation AUC over epochs.</figcaption>
-        </figure>
-      </div>
-      <h3>Classification report</h3>
-      <pre>              precision    recall  f1-score   support
+  <h4>📷 Sample Images for Each Task</h4>
+  <p><strong>Samples for multi-class classification</strong></p>
+  <img src="../assets/deeplense/classification/classSample.png" alt="Classification Sample">
+
+  <p><strong>Samples for super-resolution</strong></p>
+  <img src="../assets/deeplense/superresolution/superRsample.png" alt="Super-resolution Sample">
+
+  <h3>Prepare Data for Masked Autoencoder (MAE) Pretraining</h3>
+  <h4>Input for Encoder</h4>
+  <p><strong>Sample for splitted-image</strong></p>
+  <img src="../assets/deeplense/mae/splitted_image.png" alt="Splitted Image">
+
+  <p><strong>Sample for masked-image</strong></p>
+  <img src="../assets/deeplense/mae/masked_image.png" alt="Masked Image">
+
+  <h4>Masked patches and Visible patches</h4>
+  <table>
+    <tr>
+      <td><img src="../assets/deeplense/mae/masked_patches.png" alt="Masked Patches"></td>
+      <td><img src="../assets/deeplense/mae/visible_patches.png" alt="Visible Patches"></td>
+    </tr>
+  </table>
+
+  <h3>🛠 Model and Approach</h3>
+  <h4>1️⃣ Masked Autoencoder (MAE) Pretraining</h4>
+  <ul>
+    <li><strong>Goal:</strong> Learn a feature representation of strong lensing images.</li>
+    <li><strong>Architecture:</strong> Vision Transformer (ViT) backbone with a reconstruction head.</li>
+    <li><strong>Pretraining Loss:</strong> Mean Squared Error (MSE)</li>
+    <li><strong>Optimizer:</strong> AdamW</li>
+    <li><strong>Batch Size:</strong> 256</li>
+    <li><strong>Epochs:</strong> 250</li>
+  </ul>
+
+  <h4>2️⃣ Fine-Tuning for Multi-Class Classification</h4>
+  <ul>
+    <li><strong>Loss Function:</strong> Cross-Entropy Loss</li>
+    <li><strong>Optimizer:</strong> AdamW</li>
+    <li><strong>Batch Size:</strong> 256</li>
+    <li><strong>Evaluation Metrics:</strong> AUC Score, Accuracy</li>
+    <li><strong>Epochs:</strong> 250</li>
+  </ul>
+
+  <h4>3️⃣ Fine-Tuning for Super-Resolution</h4>
+  <ul>
+    <li><strong>Loss Function:</strong> Mean Squared Error (MSE)</li>
+    <li><strong>Batch Size:</strong> 256</li>
+    <li><strong>Evaluation Metrics:</strong> MSE, SSIM, PSNR</li>
+    <li><strong>Epochs:</strong> 200</li>
+    <li><strong>NOTE:</strong> The decoder used here is not suitable for super-resolution tasks. Architectural improvements are needed.</li>
+  </ul>
+
+  <h3>📊 Results</h3>
+  <h4>1️⃣ MAE Pretraining</h4>
+  <img src="../assets/deeplense/mae/MAE_Losses.png" alt="MAE Loss">
+  <table>
+    <tr>
+      <td><img src="../assets/deeplense/mae/pca_plot.png" alt="PCA Plot"></td>
+      <td><img src="../assets/deeplense/mae/tsne_plot.png" alt="TSNE Plot"></td>
+    </tr>
+  </table>
+
+  <h4>2️⃣ Multi-Class Classification</h4>
+  <table>
+    <tr>
+      <td><img src="../assets/deeplense/classification/Accuracies.png" alt="Accuracy"></td>
+      <td><img src="../assets/deeplense/classification/AUC.png" alt="AUC"></td>
+    </tr>
+  </table>
+
+  <h5>Classification Report</h5>
+  <pre>
+              precision    recall  f1-score   support
 
       no_sub       0.97      0.99      0.98      2945
        axion       0.98      0.97      0.97      2990
@@ -95,55 +114,52 @@
 
     accuracy                           0.97      8911
    macro avg       0.97      0.97      0.97      8911
-weighted avg       0.97      0.97      0.97      8911</pre>
-    </section>
+weighted avg       0.97      0.97      0.97      8911
+  </pre>
+  <table>
+    <tr>
+      <td><img src="../assets/deeplense/classification/ROC_curve.png" alt="ROC Curve"></td>
+      <td><img src="../assets/deeplense/classification/confusion_matrix.png" alt="Confusion Matrix"></td>
+    </tr>
+    <tr>
+      <td><img src="../assets/deeplense/classification/pca_plot.png" alt="PCA"></td>
+      <td><img src="../assets/deeplense/classification/tsne_plot.png" alt="t-SNE"></td>
+    </tr>
+  </table>
 
-    <section class="project-section" aria-labelledby="reconstruction-title">
-      <h2 id="reconstruction-title">Super-resolution evaluation</h2>
-      <div class="project-grid three">
-        <figure class="project-figure dark">
-          <img src="../assets/deeplense/superresolution/lr_image.png" alt="Low-resolution gravitational-lensing input image" loading="lazy">
-          <figcaption>Low-resolution input</figcaption>
-        </figure>
-        <figure class="project-figure dark">
-          <img src="../assets/deeplense/superresolution/superResoluted.png" alt="Model-predicted high-resolution gravitational-lensing image" loading="lazy">
-          <figcaption>Model output</figcaption>
-        </figure>
-        <figure class="project-figure dark">
-          <img src="../assets/deeplense/superresolution/hr_image.png" alt="Ground-truth high-resolution gravitational-lensing image" loading="lazy">
-          <figcaption>High-resolution target</figcaption>
-        </figure>
-      </div>
-      <div class="project-grid space-top">
-        <figure class="project-figure">
-          <img src="../assets/deeplense/superresolution/PSNR.png" alt="Validation PSNR values across super-resolution batches" loading="lazy">
-          <figcaption>PSNR during validation.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="../assets/deeplense/superresolution/SSIM.png" alt="Validation SSIM values across super-resolution batches" loading="lazy">
-          <figcaption>SSIM during validation.</figcaption>
-        </figure>
-      </div>
-    </section>
+  <h4>3️⃣ Super-Resolution</h4>
+  <table>
+    <tr>
+      <td><img src="../assets/deeplense/superresolution/SSIM.png" alt="SSIM"></td>
+      <td><img src="../assets/deeplense/superresolution/PSNR.png" alt="PSNR"></td>
+    </tr>
+  </table>
+  <img src="../assets/deeplense/superresolution/MAE_Losses.png" alt="MSE">
 
-    <section class="project-section" aria-labelledby="learning-title">
-      <h2 id="learning-title">Representation learning</h2>
-      <p>Embedding visualizations provide a qualitative view of the learned feature space. They complement, but do not replace, held-out quantitative evaluation.</p>
-      <div class="project-grid">
-        <figure class="project-figure">
-          <img src="../assets/deeplense/mae/pca_plot.png" alt="PCA projection of masked autoencoder image representations" loading="lazy">
-          <figcaption>PCA projection of learned representations.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="../assets/deeplense/mae/tsne_plot.png" alt="t-SNE projection of masked autoencoder image representations" loading="lazy">
-          <figcaption>t-SNE projection of learned representations.</figcaption>
-        </figure>
-      </div>
-    </section>
+  <h5>Final Metrics</h5>
+  <ul>
+    <li>Final Validation MSE: 0.002293</li>
+    <li>Final Validation PSNR: 29.62</li>
+    <li>Final Validation SSIM: 0.9190</li>
+  </ul>
 
-    <footer class="project-footer">
-      <a href="../index.html#research">Return to Waleed's research portfolio</a>
-    </footer>
-  </main>
+  <h5>Interpretation</h5>
+  <ul>
+    <li>Lower <strong>MSE</strong> → Better reconstruction (less error).</li>
+    <li>Higher <strong>PSNR</strong> → Better quality. (30–50 dB → Good | 20–30 → Moderate | <20 → Poor)</li>
+    <li><strong>SSIM = 1</strong> → Identical images. SSIM ≈ 0 → No structural similarity.</li>
+    <li><strong>SSIM</strong> aligns more with human perception than MSE or PSNR.</li>
+  </ul>
+
+  <h5>Super-resolution Comparison</h5>
+  <table>
+    <tr>
+      <td><img src="../assets/deeplense/superresolution/lr_image.png" alt="Low-Res"></td>
+      <td><img src="../assets/deeplense/superresolution/superResoluted.png" alt="Predicted High-Res"></td>
+      <td><img src="../assets/deeplense/superresolution/hr_image.png" alt="High-Res"></td>
+    </tr>
+  </table>
+</div>
+
 </body>
 </html>

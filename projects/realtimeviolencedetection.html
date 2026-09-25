@@ -1,72 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A MobileNetV2 and bidirectional LSTM pipeline for real-time violence detection in video.">
-  <title>Real-Time Violence Detection | Waleed Khalid Alzamil</title>
-  <link rel="stylesheet" href="../assets/css/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-Time Violence Detection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <main class="project-shell" id="main">
-    <div class="project-topline">
-      <a class="wordmark" href="../index.html">WKA / AI FOR SCIENCE</a>
-      <a class="back-link" href="../index.html#research">Back to portfolio</a>
-    </div>
-    <header class="project-hero">
-      <p class="eyebrow">Computer vision · Temporal modeling</p>
-      <h1>Real-time violence detection in video.</h1>
-      <p class="project-lede">A video-classification pipeline combining frame-level visual features with temporal modeling for violent and non-violent activity recognition.</p>
-      <p>This work was part of the Graduation Project for NTI Training's AI and IoT DEY Initiative.</p>
-    </header>
 
-    <section class="project-section" aria-labelledby="pipeline-title">
-      <h2 id="pipeline-title">Model pipeline</h2>
-      <p>A pretrained MobileNetV2 extracts spatial features from video frames. A bidirectional LSTM models temporal relationships across frame sequences to classify clips.</p>
-      <div class="metric-list" aria-label="Reported project metrics">
-        <div class="metric"><strong>~97%</strong><span>Reported accuracy</span></div>
-        <div class="metric"><strong>16 fps</strong><span>Reported throughput</span></div>
-        <div class="metric"><strong>Video</strong><span>Frame and clip inference</span></div>
-      </div>
-      <figure class="project-figure space-top">
-        <img src="https://user-images.githubusercontent.com/76521677/192987124-6ab45fd6-aef9-4359-a795-c2bbebec674f.png" alt="Diagram of the MobileNet and bidirectional LSTM violence-detection model" loading="lazy">
-        <figcaption>Model diagram from the project repository.</figcaption>
-      </figure>
-    </section>
+<header class="site-header">
+  <a class="mark" href="../index.html">Waleed Alzamil</a>
+  <nav>
+    <a href="../index.html#projects">← Back to portfolio</a>
+  </nav>
+</header>
 
-    <section class="project-section" aria-labelledby="experiments-title">
-      <h2 id="experiments-title">Inference experiments</h2>
-      <p>Two prediction modes were implemented: frame-by-frame classification and whole-video prediction using temporal information across a clip.</p>
-      <div class="project-grid">
-        <figure class="project-figure">
-          <img src="https://user-images.githubusercontent.com/76521677/192982850-07593c8d-a674-4f2f-a80d-924ae318a9d7.gif" alt="Example output for frame-by-frame violence detection" loading="lazy">
-          <figcaption>Frame-by-frame prediction example.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="https://user-images.githubusercontent.com/76521677/192983491-64b20a82-326c-48cb-8932-8e59f8ccdbcc.gif" alt="Example output for frame-by-frame non-violence detection" loading="lazy">
-          <figcaption>Frame-by-frame non-violent example.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="https://user-images.githubusercontent.com/76521677/192984158-6b942c47-a0a3-409a-9b57-5795b3e548ad.png" alt="Whole-video violence detection result example one" loading="lazy">
-          <figcaption>Whole-video prediction result.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="https://user-images.githubusercontent.com/76521677/192984193-2a0e11e5-326a-4b40-81bc-2227d52853c5.png" alt="Whole-video violence detection result example two" loading="lazy">
-          <figcaption>Whole-video prediction result.</figcaption>
-        </figure>
-      </div>
-    </section>
+<div class="doc-page">
+<h2>Real-Time Violence Detection using MobileNet and Bi-directional LSTM</h2>
+  <h4>This repository is part of the Graduation Project for NTI Training - AI and IoT DEY Initiative.</h4>
 
-    <section class="project-section" aria-labelledby="limitations-title">
-      <h2 id="limitations-title">Evaluation limits</h2>
-      <p>The reported metrics are for the dataset used in the project. Further validation is needed on standard benchmarks and more varied scenarios, including multi-person interactions, weapons, and complex crowd dynamics.</p>
-      <p>Related work: <a href="https://link.springer.com/article/10.1007/s42979-020-00207-x#Sec15" target="_blank" rel="noopener noreferrer">CNN-BiLSTM Model for Violence Detection in Smart Surveillance</a>.</p>
-    </section>
+  <h3>📌 Project Overview</h3>
+  <p>
+    In this work, we proposed a real-time violence detection system based on deep learning techniques.
+    The system uses a <strong>MobileNetV2</strong> pretrained CNN as a spatial feature extractor and a <strong>Bidirectional LSTM</strong> to learn temporal relations across video frames.
+    Our primary focus was on three factors:
+  </p>
+  <ul>
+    <li>Overall generality</li>
+    <li>High accuracy</li>
+    <li>Fast response time</li>
+  </ul>
+  <p>
+    The final model achieved approximately <strong>97% accuracy</strong> and operated at <strong>16 frames per second</strong>.
+  </p>
+  <img src="https://user-images.githubusercontent.com/76521677/192987124-6ab45fd6-aef9-4359-a795-c2bbebec674f.png" alt="Model Diagram" />
 
-    <footer class="project-footer">
-      <a href="../index.html#research">Return to Waleed's portfolio</a>
-    </footer>
-  </main>
+  <h3>🧪 Experiments</h3>
+  <p>We implemented two prediction functions to evaluate our model on video streams:</p>
+
+  <h4>🎥 Frame-by-Frame Prediction</h4>
+  <p>In this mode, the model processes each frame of the video individually and classifies it as violent or non-violent.</p>
+  <img src="https://user-images.githubusercontent.com/76521677/192982850-07593c8d-a674-4f2f-a80d-924ae318a9d7.gif" alt="Violence Detection Example - Violent" />
+  <img src="https://user-images.githubusercontent.com/76521677/192983491-64b20a82-326c-48cb-8932-8e59f8ccdbcc.gif" alt="Violence Detection Example - NonViolent" />
+
+  <h4>🎬 Whole-Video Prediction</h4>
+  <p>The second mode performs a prediction on the entire video clip as a whole, considering temporal patterns across the full video sequence.</p>
+  <img src="https://user-images.githubusercontent.com/76521677/192984158-6b942c47-a0a3-409a-9b57-5795b3e548ad.png" alt="Whole Video Prediction Result 1" />
+  <img src="https://user-images.githubusercontent.com/76521677/192984193-2a0e11e5-6b2a-4b40-81bc-2227d52853c5.png" alt="Whole Video Prediction Result 2" />
+
+  <h3>✅ Conclusion</h3>
+  <p>
+    Our proposed <strong>MobileNetV2-BiLSTM</strong> variant achieved the best results for the dataset used in this project.
+    While the model performs exceptionally well, it still requires validation on more standard datasets, especially for:
+  </p>
+  <ul>
+    <li>Many-to-many and one-to-many violent activity scenarios</li>
+    <li>Scenes involving weapons or complex crowd dynamics</li>
+  </ul>
+
+  <h3>📚 References</h3>
+  <p>
+    CNN-BiLSTM Model for Violence Detection in Smart Surveillance — 
+    <a href="https://link.springer.com/article/10.1007/s42979-020-00207-x#Sec15" target="_blank">Read the Paper</a>
+  </p>
+</div>
+
 </body>
 </html>
