@@ -1,94 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Geometric deep learning for 3D tooth segmentation and automated dental crown generation.">
-  <title>3D Crown Generation | Waleed Khalid Alzamil</title>
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crown Generation - 3D Point Cloud Models</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fdfdfd;
+      color: #2c3e50;
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+      line-height: 1.8;
+    }
+    h1, h2, h3 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3em;
+    }
+    h3 {
+      margin-top: 2em;
+    }
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 1.2em;
+    }
+    hr {
+      margin: 2rem 0;
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <main class="project-shell" id="main">
-    <div class="project-topline">
-      <a class="wordmark" href="../index.html">WKA / AI FOR SCIENCE</a>
-      <a class="back-link" href="../index.html#research">Back to selected work</a>
-    </div>
-    <header class="project-hero">
-      <p class="eyebrow">Graduation research · 3D geometric learning</p>
-      <h1>From tooth point clouds to generated crowns.</h1>
-      <p class="project-lede">A two-part project exploring 3D tooth segmentation and crown generation through point-cloud learning, dynamic graphs, and transformer-based architectures.</p>
-      <p><a class="text-link" href="https://github.com/WaleedAlzamil80/3DModels" target="_blank" rel="noopener noreferrer">View project repository</a></p>
-    </header>
 
-    <section class="project-section" aria-labelledby="problem-title">
-      <h2 id="problem-title">Problem and objective</h2>
-      <p>The project investigates an end-to-end workflow for dental restoration: segment teeth from 3D data, then generate a crown that fits the local geometry. The work combined deep-learning methods for point sets with geometric processing and reconstruction.</p>
-      <div class="project-callout">
-        <p>The segmentation model achieved 95% accuracy in the graduation project evaluation. The project reports document the segmentation and crown-generation stages separately.</p>
-      </div>
-      <p><a href="../publications/CrownGeneration_part_1.pdf">Read Part 1: 3D teeth segmentation</a> · <a href="../publications/CrownGeneration_part_2.pdf">Read Part 2: Crown generation</a></p>
-    </section>
+  <h1>Crown Generation - 3D Point Cloud Models</h1>
+  <p>This repository implements various deep learning models for processing 3D point clouds, focusing on tasks like classification and segmentation. Below is a summary of the models implemented and planned for this repository.</p>
+  
+  <hr/>
 
-    <section class="project-section" aria-labelledby="methods-title">
-      <h2 id="methods-title">Geometric learning methods</h2>
-      <div class="project-grid">
-        <article>
-          <h3>Point sets and local geometry</h3>
-          <p>PointNet and PointNet++ provide direct point-set and hierarchical feature-learning baselines for segmentation.</p>
-          <figure class="project-figure">
-            <img src="../assets/3dmodel/PointNet/PointNetpp.png" alt="PointNet++ hierarchical point-set feature learning and segmentation architecture" loading="lazy">
-            <figcaption>Hierarchical feature learning over point sets.</figcaption>
-          </figure>
-        </article>
-        <article>
-          <h3>Dynamic neighborhood graphs</h3>
-          <p>DGCNN builds local neighborhoods in feature space and applies edge convolutions to model relationships between points.</p>
-          <figure class="project-figure">
-            <img src="../assets/3dmodel/Graphs/DynamicGraphCNN.png" alt="Dynamic Graph CNN architecture for point-cloud classification and segmentation" loading="lazy">
-            <figcaption>Dynamic graph construction and edge-convolution stages.</figcaption>
-          </figure>
-        </article>
-        <article>
-          <h3>Attention over point clouds</h3>
-          <p>Point-cloud transformers were explored for aggregating broader context across geometric features.</p>
-          <figure class="project-figure">
-            <img src="../assets/3dmodel/transformers/PCT/PCTArchitecture.png" alt="Point Cloud Transformer architecture" loading="lazy">
-            <figcaption>Point Cloud Transformer architecture.</figcaption>
-          </figure>
-        </article>
-        <article>
-          <h3>Reconstruction and geometric context</h3>
-          <p>FoldingNet and geometry-aware transformer approaches informed experiments in reconstructing missing structure and preserving spatial context.</p>
-          <figure class="project-figure">
-            <img src="../assets/3dmodel/transformers/GeometryAware/Pipeline.png" alt="Geometry-aware transformer pipeline for point-cloud completion" loading="lazy">
-            <figcaption>Geometry-aware point-cloud completion pipeline.</figcaption>
-          </figure>
-        </article>
-      </div>
-    </section>
+  <h3>1. PointNet</h3>
+  <p>
+    <strong>PointNet</strong> is a deep learning architecture designed for directly processing 3D point clouds.
+    It uses MLPs and symmetric functions to capture both local and global features from 3D data.
+    This architecture is well-suited for tasks like 3D classification and segmentation.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1612.00593" target="_blank">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</a></li>
+    <li><strong>Current Implementation:</strong> Implemented for 3D teeth segmentation, focusing on direct feature extraction from point clouds.</li>
+  </ul>
+  <img src="/assets/3dmodel/PointNet/PointNet.png" alt="PointNet Architecture" />
 
-    <section class="project-section" aria-labelledby="design-title">
-      <h2 id="design-title">Representation and alignment</h2>
-      <p>A contrastive-learning component was trained to preserve upper and lower dental arches in a fixed canonical space. This provided a consistent geometric frame for downstream crown-generation experiments.</p>
-      <figure class="project-figure">
-        <img src="../assets/3dmodel/Graphs/FoldingNet.png" alt="FoldingNet graph-based encoder and folding decoder architecture for point-cloud reconstruction" loading="lazy">
-        <figcaption>Folding-based reconstruction architecture used in the project exploration.</figcaption>
-      </figure>
-    </section>
+  <hr/>
 
-    <section class="project-section" aria-labelledby="reports-title">
-      <h2 id="reports-title">Reports and related work</h2>
+  <h3>2. PointNet++</h3>
+  <p>
+    <strong>PointNet++</strong> builds upon PointNet by introducing hierarchical feature learning to capture features at multiple scales.
+    It uses set abstraction layers and sampling techniques to represent fine-grained local structures.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1706.02413" target="_blank">PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</a></li>
+    <li><strong>Current Implementation:</strong> Integrated for robust 3D segmentation and classification with enhanced local feature extraction.</li>
+    <li><strong>Future Enhancements:</strong>
       <ul>
-        <li><a href="../publications/CrownGeneration_part_1.pdf">Part 1: 3D teeth segmentation</a></li>
-        <li><a href="../publications/CrownGeneration_part_2.pdf">Part 2: Crown generation</a></li>
-        <li><a href="https://github.com/WaleedAlzamil80/3DModels" target="_blank" rel="noopener noreferrer">Source repository</a></li>
+        <li>Multi-scale grouping (MSG)</li>
+        <li>Multi-resolution grouping (MRG)</li>
       </ul>
-    </section>
+    </li>
+  </ul>
+  <img src="/assets/3dmodel/PointNet/PointNetpp.png" alt="PointNet++ Architecture" />
 
-    <footer class="project-footer">
-      <a href="../index.html#research">Return to Waleed's research portfolio</a>
-    </footer>
-  </main>
+  <hr/>
+
+  <h3>3. DynamicGraphCNN (DGCNN)</h3>
+  <p>
+    <strong>DynamicGraphCNN</strong> (DGCNN) is a graph-based network for point cloud processing. It dynamically constructs a graph in feature space and uses edge convolutions to learn geometric relationships between neighboring points.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1801.07829" target="_blank">Dynamic Graph CNN for Learning on Point Clouds</a></li>
+    <li><strong>Current Implementation:</strong> Applied to segmentation using dynamic graphs and edge convolutions.</li>
+    <li><strong>Future Enhancements:</strong>
+      <ul>
+        <li>Optimization for large-scale datasets</li>
+        <li>Improved memory efficiency</li>
+      </ul>
+    </li>
+  </ul>
+  <img src="/assets/3dmodel/Graphs/DynamicGraphCNN.png" alt="DynamicGraphCNN" />
+
+  <hr/>
+
+  <h3>4. Point Cloud Transformer (PCT)</h3>
+  <p>
+    <strong>PCT</strong> adapts the transformer architecture for 3D point clouds to enable global context modeling through self-attention mechanisms.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/2012.09688" target="_blank">PCT: Point Cloud Transformer</a></li>
+    <li><strong>Current Implementation:</strong> Integrated for segmentation tasks using attention-based feature extraction.</li>
+  </ul>
+  <img src="/assets/3dmodel/transformers/PCT/PCTArchitecture.png" alt="PCT Architecture" />
+
+  <hr/>
+
+  <h3>5. Mining Point Cloud</h3>
+  <p>
+    This module explores feature mining techniques in point clouds for improved segmentation/classification,
+    including data augmentation, denoising, and sampling strategies.
+  </p>
+  <ul>
+    <li><strong>Paper:</strong> <a href="https://arxiv.org/pdf/1712.06760" target="_blank">Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling</a></li>
+    <li><strong>Current Implementation:</strong> FoldingNet is used as a standalone feature extractor and integrated with the Spatial Transformer from the PointNet architecture.</li>
+  </ul>
+  <img src="/assets/3dmodel/Graphs/MiningPointCloud.png" alt="Mining Point Cloud" />
+
 </body>
 </html>
