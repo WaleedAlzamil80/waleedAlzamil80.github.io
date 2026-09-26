@@ -3,102 +3,208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crown Generation - 3D Point Cloud Models</title>
+<title>AI-Automated Dental Crown Generation — Waleed Alzamil</title>
+<meta name="description" content="A four-stage 3D deep-learning pipeline from intraoral scan to dental crown: point-cloud segmentation at 95% accuracy, self-supervised canonical alignment, margin-line estimation, and a FoldingNet-based generator.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15171c" media="(prefers-color-scheme: dark)">
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <header class="site-header">
   <a class="mark" href="../index.html">Waleed Alzamil</a>
-  <nav>
+  <nav aria-label="Breadcrumb">
     <a href="../index.html#projects">← Back to portfolio</a>
   </nav>
 </header>
 
-<div class="doc-page">
-<h1>Crown Generation - 3D Point Cloud Models</h1>
-  <p>This repository implements various deep learning models for processing 3D point clouds, focusing on tasks like classification and segmentation. Below is a summary of the models implemented and planned for this repository.</p>
-  
-  <hr/>
+<main class="doc-page" id="main">
+<article>
 
-  <h3>1. PointNet</h3>
-  <p>
-    <strong>PointNet</strong> is a deep learning architecture designed for directly processing 3D point clouds.
-    It uses MLPs and symmetric functions to capture both local and global features from 3D data.
-    This architecture is well-suited for tasks like 3D classification and segmentation.
-  </p>
+  <header class="doc-head">
+    <p class="doc-kicker">Graduation project · Ain Shams University · Sept 2024 – June 2025</p>
+    <h1>AI-Automated Dental Crown Generation</h1>
+    <p class="doc-standfirst">Getting from a raw intraoral scan to a fitted crown takes four separate models. Three of them work; the fourth is built and waiting on data that does not exist yet.</p>
+    <dl class="doc-meta">
+      <dt>Data</dt><dd>Teeth3DS — 1,800 intraoral scans (MICCAI 2022)</dd>
+      <dt>Task</dt><dd>Per-point labelling into 33 classes (32 teeth + gingiva)</dd>
+      <dt>Stack</dt><dd>PyTorch · DGCNN · Point Cloud Transformer · EdgeConv · FoldingNet</dd>
+      <dt>Shipped</dt><dd>FastAPI service, Dockerised</dd>
+    </dl>
+    <p class="doc-links">
+      <a href="https://github.com/WaleedAlzamil80/3DModels" target="_blank" rel="noopener">Development repo</a>
+      <a href="https://github.com/WaleedAlzamil80/3d-teeth-segmentation-deployment" target="_blank" rel="noopener">Deployment repo</a>
+      <a href="../publications/CrownGeneration_part_1.pdf">Report, part 1</a>
+      <a href="../publications/CrownGeneration_part_2.pdf">Report, part 2</a>
+    </p>
+  </header>
+
+  <div class="metrics">
+    <div class="metric"><b>95%</b><span>Segmentation accuracy</span></div>
+    <div class="metric"><b>33</b><span>Classes</span></div>
+    <div class="metric"><b>178</b><span>Labelled margin-line cases</span></div>
+  </div>
+
+  <h2>The problem</h2>
+  <p>To design a crown for a prepared tooth, a model cannot look at that tooth alone. The crown has to meet its neighbours on either side and occlude correctly against the opposing arch — so designing for tooth 35 means understanding 34 and 36 beside it and 24, 25 and 26 above it. That turns the first step into a fine-grained labelling problem: every point in the scan has to be assigned to one of 33 classes, the 32 teeth plus gingiva.</p>
+  <p>Everything downstream inherits the errors of that step, which is why most of the work went into it and into the preprocessing that makes it reliable.</p>
+
+  <h2>Segmentation</h2>
+  <p>Two architectures were compared on Teeth3DS: <strong>DGCNN</strong>, which builds a graph over each point's nearest neighbours and recomputes it at every layer, and the <strong>Point Cloud Transformer</strong>, which uses offset-attention to relate every point to every other.</p>
+  <p>Each was trained two ways: on scans pre-aligned into a fixed canonical space, and on randomly rotated scans so the model has to become invariant on its own. The split matters. In a fixed canonical space both models do well, and PCT reached <strong>95% accuracy</strong>. Under random rigid transformations DGCNN degrades noticeably — it leans on a T-Net to align its input, and that T-Net is the weak link. PCT holds up better, but the invariant variant never caught up with the canonical-space one, even after a second semester of preprocessing and architectural tuning.</p>
+  <p>That result is what set up the rest of the project. The best segmentation model needs its input in a particular canonical pose — so something has to put it there.</p>
+
+  <p>The invariant model was then carried into a second semester of work — better sampling, cleaning and alignment in preprocessing, plus architectural tuning. It improved measurably: overall accuracy moved from roughly <strong>78% to about 84%</strong>, and test mIoU from about <strong>0.32 to 0.48</strong>. It still did not catch the canonical-space model.</p>
+
+  <div class="fig-row">
+    <figure>
+      <img src="../assets/3dmodel/results/seg-accuracy-s1.png" alt="Training and test accuracy over 30 epochs for the first-semester invariant model, plateauing near 0.78" width="640" height="480" loading="lazy" decoding="async">
+      <figcaption>Accuracy, first semester — plateaus near 0.78.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/3dmodel/results/seg-accuracy-s2.png" alt="Training and test accuracy over 50 epochs for the second-semester invariant model, reaching about 0.84" width="640" height="480" loading="lazy" decoding="async">
+      <figcaption>Accuracy, second semester — about 0.84 after tuning.</figcaption>
+    </figure>
+  </div>
+
+  <div class="fig-row">
+    <figure>
+      <img src="../assets/3dmodel/results/seg-miou-s1.png" alt="Training and test mIoU for the first-semester model, test curve near 0.32" width="640" height="480" loading="lazy" decoding="async">
+      <figcaption>mIoU, first semester — test near 0.32.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/3dmodel/results/seg-miou-s2.png" alt="Training and test mIoU for the second-semester model, test curve near 0.48" width="640" height="480" loading="lazy" decoding="async">
+      <figcaption>mIoU, second semester — test near 0.48. The train/test gap is the honest story here.</figcaption>
+    </figure>
+  </div>
+
+  <figure class="figure--wide">
+    <img src="../assets/3dmodel/Graphs/DynamicGraphCNN.png" alt="DGCNN architecture diagram showing EdgeConv layers over dynamically recomputed neighbourhood graphs" width="2076" height="916" loading="lazy" decoding="async">
+    <figcaption>DGCNN (Wang et al., 2019) — reference architecture.</figcaption>
+  </figure>
+
+  <figure class="figure--wide">
+    <img src="../assets/3dmodel/transformers/PCT/PCTArchitecture.png" alt="Point Cloud Transformer architecture diagram showing offset-attention over point features" width="1991" height="503" loading="lazy" decoding="async">
+    <figcaption>Point Cloud Transformer (Guo et al., 2021) — reference architecture, and the stronger of the two here.</figcaption>
+  </figure>
+
+  <h2>Canonical alignment</h2>
+  <p>This is the part I would point at first. There are no labelled alignment pairs, so the network is trained against itself: centre each point cloud, apply a random rigid transformation, and ask the model to predict the inverse that undoes it. The loss combines reconstruction against the original with a regularisation term pushing the predicted 3×3 matrix toward orthogonality,</p>
+
+<pre><code>L = ‖X̄ − X̂‖²_F  +  λ‖I − RᵀR‖²_F        (λ = 0.001)</code></pre>
+
+  <figure class="figure--wide">
+    <img src="../assets/3dmodel/results/align-training.png" alt="Training loop diagram: centre the point cloud, apply a random rigid transform, predict the inverse, apply it, and compare against the centred original" width="2019" height="1656" loading="lazy" decoding="async">
+    <figcaption>The training loop. No labels are needed — the random transform is both the perturbation and the target.</figcaption>
+  </figure>
+
+  <p>PointNet's original T-Net was the obvious starting point and it did not work — a pointwise MLP followed by a max-pool cannot see enough local geometry to infer a rotation. Replacing it with <strong>EdgeConv</strong> layers, which aggregate over each point's neighbourhood, fixed the convergence problem.</p>
+  <p>Regularisation alone still leaves a matrix that is only approximately a rotation, and the residual shear visibly distorts the arch. So at inference the predicted matrix is projected onto the nearest true rotation by SVD:</p>
+
+<pre><code>M = UΣVᵀ   ⇒   R = UVᵀ</code></pre>
+
+  <p>That projection is cheap, exact, and takes the determinant to ≈0.999999. The difference is easy to see.</p>
+
+  <div class="fig-row">
+    <figure>
+      <img src="../assets/3dmodel/results/align-inference-raw.png" alt="Inference path using the raw predicted matrix, which may include shear" width="2019" height="624" loading="lazy" decoding="async">
+      <figcaption>Using the predicted matrix directly — not guaranteed to be a rotation.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/3dmodel/results/align-inference-svd.png" alt="Inference path with an SVD projection step enforcing orthonormality before applying the rotation" width="2808" height="624" loading="lazy" decoding="async">
+      <figcaption>With the SVD projection step inserted before the rotation is applied.</figcaption>
+    </figure>
+  </div>
+
+  <div class="fig-row">
+    <figure>
+      <img src="../assets/3dmodel/results/align-before-svd.png" alt="Point cloud alignment before SVD projection: predicted arch in red offset from green ground truth" width="1179" height="828" loading="lazy" decoding="async">
+      <figcaption><strong>Before SVD.</strong> Prediction in red against ground truth in green — roughly aligned, but sheared. Chamfer 3.567, L2 6.106.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/3dmodel/results/align-after-svd.png" alt="Point cloud alignment after SVD projection: predicted arch in blue closely overlapping green ground truth" width="1179" height="828" loading="lazy" decoding="async">
+      <figcaption><strong>After SVD.</strong> The same prediction in blue, projected onto SO(3). The shear is gone and the arches sit on top of each other.</figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="../assets/3dmodel/results/align-loss.png" alt="Training loss curve for the canonical alignment network" width="640" height="480" loading="lazy" decoding="async">
+    <figcaption>Training loss for the alignment network.</figcaption>
+  </figure>
+
+  <h2>Margin-line estimation</h2>
+  <p>The margin line is the boundary between the prepared tooth and the surrounding tissue — the curve the crown actually has to seat against, so its precision is a clinical constraint rather than an aesthetic one. Here DGCNN was adapted into a shape-completion model conditioned on tooth number, predicting the full contour from partial input.</p>
+  <p>Only about <strong>178 labelled cases</strong> were available, so this is reported qualitatively. The predicted points track the ground-truth curve closely enough to suggest the approach is sound, but with a dataset that size no honest accuracy number can be quoted.</p>
+
+  <div class="fig-row">
+    <figure>
+      <img src="../assets/3dmodel/results/margin-line-3d.png" alt="A prepared tooth point cloud in red with the predicted margin line traced around it in blue" width="755" height="873" loading="lazy" decoding="async">
+      <figcaption>The predicted margin line (blue) traced around the prepared tooth (red).</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/3dmodel/results/margin-line.png" alt="Predicted margin-line points in blue following the green ground-truth contour" width="1018" height="906" loading="lazy" decoding="async">
+      <figcaption>The same prediction against the ground-truth contour (green), viewed along the tooth axis.</figcaption>
+    </figure>
+  </div>
+
+  <h2>Crown generation</h2>
+  <p>The generator takes the segmented, aligned tooth context with the target tooth masked out, and reconstructs the missing crown: an EdgeConv feature extractor for local geometry, a geometry-aware transformer encoder for global context, and a <strong>FoldingNet</strong> decoder that deforms a 2D grid into the output surface.</p>
+
+  <figure class="figure--wide">
+    <img src="../assets/3dmodel/results/architecture.png" alt="Crown generation pipeline: input point cloud through MLP and DGCNN branches, concatenated, encoder transformer, query generator conditioned on the masked tooth, second encoder transformer, FoldingNet decoder, summed to the output point cloud" width="4455" height="1068" loading="lazy" decoding="async">
+    <figcaption>The generation pipeline. The masked tooth conditions a query generator, and the FoldingNet branch is summed with the coarse prediction to produce the final point cloud.</figcaption>
+  </figure>
+
+  <p><strong>This module was never trained.</strong> Supervising it needs paired data — prepared tooth in, finished crown out — and no such labelled dataset was available. Every component is implemented and integrated end to end, and the architecture is documented in part 2 of the report, but there are no experimental results for this chapter and none are claimed. It is a designed pipeline waiting on data, not a working generator.</p>
+
+  <figure>
+    <img src="../assets/3dmodel/Graphs/FoldingNet.png" alt="FoldingNet decoder architecture, deforming a 2D grid into a 3D surface" width="900" height="391" loading="lazy" decoding="async">
+    <figcaption>FoldingNet (Yang et al., 2018) — reference architecture for the decoder.</figcaption>
+  </figure>
+
+  <h2>What shipped</h2>
+  <p>The segmentation model is packaged as a FastAPI service and published to Docker Hub, taking <code>.bmesh</code>, <code>.obj</code>, <code>.stl</code> and <code>.ply</code> and exposing Swagger for interactive testing.</p>
+
+<pre><code>docker pull waleedalzamil80/teeth_segmentation_last_pct_model:latest
+docker run -d -p 8000:8000 waleedalzamil80/teeth_segmentation_last_pct_model:latest
+# → http://localhost:8000/docs</code></pre>
+
+  <p>The deployed model is the rigid-transformation-invariant PCT variant rather than the 95% canonical-space one, so that it accepts a scan in any orientation without a separate alignment pass.</p>
+
+  <h2>How it was trained</h2>
+  <p>Everything ran on Kaggle: two NVIDIA Tesla T4s at 16 GB each, PyTorch 2.4.0 on CUDA 12.3, batch sizes of 16 or 32 depending on the model, inside a 12-hour session limit.</p>
+  <p>One methodological note worth stating plainly, because the plots invite the wrong reading. There was <strong>no validation split</strong>. The test set was evaluated after every epoch and plotted alongside training purely for visualisation — it was never used to tune hyperparameters or select a checkpoint. The honest way to read those curves is to ignore the test line and look only at the final epoch.</p>
+
+  <h2>Limitations</h2>
   <ul>
-    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1612.00593" target="_blank">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</a></li>
-    <li><strong>Current Implementation:</strong> Implemented for 3D teeth segmentation, focusing on direct feature extraction from point clouds.</li>
+    <li><strong>The generator is untrained.</strong> Nothing in this project produces a crown today. Changing that needs a labelled crown dataset, which realistically means a clinical collaboration.</li>
+    <li>PCA was also tried for canonical alignment and works, but suffers from eigenvector direction ambiguity — the axes come out right up to a sign flip, which is why a learned aligner was worth the effort.</li>
+    <li>Margin-line results are qualitative only, on ~178 cases.</li>
+    <li>Everything is trained and evaluated on Teeth3DS alone. Robustness across scanners, resolutions and occlusion patterns is untested.</li>
   </ul>
-  <img src="../assets/3dmodel/PointNet/PointNet.png" alt="PointNet Architecture" />
 
-  <hr/>
-
-  <h3>2. PointNet++</h3>
-  <p>
-    <strong>PointNet++</strong> builds upon PointNet by introducing hierarchical feature learning to capture features at multiple scales.
-    It uses set abstraction layers and sampling techniques to represent fine-grained local structures.
-  </p>
+  <h2>References</h2>
   <ul>
-    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1706.02413" target="_blank">PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</a></li>
-    <li><strong>Current Implementation:</strong> Integrated for robust 3D segmentation and classification with enhanced local feature extraction.</li>
-    <li><strong>Future Enhancements:</strong>
-      <ul>
-        <li>Multi-scale grouping (MSG)</li>
-        <li>Multi-resolution grouping (MRG)</li>
-      </ul>
-    </li>
+    <li>Qi et al. — <a href="https://arxiv.org/abs/1612.00593" target="_blank" rel="noopener">PointNet</a>, and <a href="https://arxiv.org/abs/1706.02413" target="_blank" rel="noopener">PointNet++</a></li>
+    <li>Wang et al. — <a href="https://arxiv.org/abs/1801.07829" target="_blank" rel="noopener">Dynamic Graph CNN (DGCNN / EdgeConv)</a></li>
+    <li>Guo et al. — <a href="https://arxiv.org/abs/2012.09688" target="_blank" rel="noopener">Point Cloud Transformer</a></li>
+    <li>Yang et al. — <a href="https://arxiv.org/abs/1712.07262" target="_blank" rel="noopener">FoldingNet</a></li>
+    <li>Yu et al. — <a href="https://arxiv.org/abs/2108.08839" target="_blank" rel="noopener">PoinTr</a>, which informed the geometry-aware encoder</li>
   </ul>
-  <img src="../assets/3dmodel/PointNet/PointNetpp.png" alt="PointNet++ Architecture" />
 
-  <hr/>
+</article>
+</main>
 
-  <h3>3. DynamicGraphCNN (DGCNN)</h3>
-  <p>
-    <strong>DynamicGraphCNN</strong> (DGCNN) is a graph-based network for point cloud processing. It dynamically constructs a graph in feature space and uses edge convolutions to learn geometric relationships between neighboring points.
-  </p>
-  <ul>
-    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/1801.07829" target="_blank">Dynamic Graph CNN for Learning on Point Clouds</a></li>
-    <li><strong>Current Implementation:</strong> Applied to segmentation using dynamic graphs and edge convolutions.</li>
-    <li><strong>Future Enhancements:</strong>
-      <ul>
-        <li>Optimization for large-scale datasets</li>
-        <li>Improved memory efficiency</li>
-      </ul>
-    </li>
-  </ul>
-  <img src="../assets/3dmodel/Graphs/DynamicGraphCNN.png" alt="DynamicGraphCNN" />
-
-  <hr/>
-
-  <h3>4. Point Cloud Transformer (PCT)</h3>
-  <p>
-    <strong>PCT</strong> adapts the transformer architecture for 3D point clouds to enable global context modeling through self-attention mechanisms.
-  </p>
-  <ul>
-    <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/2012.09688" target="_blank">PCT: Point Cloud Transformer</a></li>
-    <li><strong>Current Implementation:</strong> Integrated for segmentation tasks using attention-based feature extraction.</li>
-  </ul>
-  <img src="../assets/3dmodel/transformers/PCT/PCTArchitecture.png" alt="PCT Architecture" />
-
-  <hr/>
-
-  <h3>5. Mining Point Cloud</h3>
-  <p>
-    This module explores feature mining techniques in point clouds for improved segmentation/classification,
-    including data augmentation, denoising, and sampling strategies.
-  </p>
-  <ul>
-    <li><strong>Paper:</strong> <a href="https://arxiv.org/pdf/1712.06760" target="_blank">Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling</a></li>
-    <li><strong>Current Implementation:</strong> FoldingNet is used as a standalone feature extractor and integrated with the Spatial Transformer from the PointNet architecture.</li>
-  </ul>
-  <img src="../assets/3dmodel/Graphs/MiningPointCloud.png" alt="Mining Point Cloud" />
-</div>
+<footer class="site-footer">
+  <span>Cairo → Cape Town</span>
+  <span><a href="mailto:waleedalzamil80@gmail.com">waleedalzamil80@gmail.com</a> · <a href="https://github.com/WaleedAlzamil80" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/waleedalzamil80" target="_blank" rel="noopener">LinkedIn</a></span>
+</footer>
 
 </body>
 </html>

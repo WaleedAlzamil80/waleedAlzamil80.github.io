@@ -3,75 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Othello AI</title>
+<title>Othello AI — Waleed Alzamil</title>
+<meta name="description" content="Four ways to choose a move in Othello: minimax, alpha-beta pruning, Monte Carlo tree search, and a self-play actor-critic network — built and played against each other.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15171c" media="(prefers-color-scheme: dark)">
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <header class="site-header">
   <a class="mark" href="../index.html">Waleed Alzamil</a>
-  <nav>
+  <nav aria-label="Breadcrumb">
     <a href="../index.html#projects">← Back to portfolio</a>
   </nav>
 </header>
 
-<div class="doc-page">
-<h2>🎮 Othello AI</h2>
-  <p>Welcome to the <strong>Othello AI</strong> project! This project implements an artificial intelligence agent to play the classic game of <strong>Othello</strong> (also known as <strong>Reversi</strong>) with a graphical user interface (GUI).</p>
-  
-  <p>The AI supports multiple difficulty levels and algorithms including <strong>MinMax</strong> and <strong>Monte Carlo Tree Search (MCTS)</strong>, allowing users to play against different levels of strategic intelligence.</p>
+<main class="doc-page" id="main">
+<article>
 
-  <h3>🖥️ GUI Overview</h3>
+  <header class="doc-head">
+    <p class="doc-kicker">Coursework project · April – June 2024</p>
+    <h1>Othello AI</h1>
+    <p class="doc-standfirst">Four ways to choose a move on an 8×8 board — exhaustive search, pruned search, random simulation, and a learned value — implemented in one engine so they can play each other.</p>
+    <dl class="doc-meta">
+      <dt>Role</dt><dd>Sole author</dd>
+      <dt>Stack</dt><dd>Python · PyTorch · Pygame</dd>
+      <dt>Agents</dt><dd>Minimax · Alpha-beta · MCTS · Actor-critic</dd>
+    </dl>
+    <p class="doc-links">
+      <a href="https://github.com/WaleedAlzamil80/Othello-AI" target="_blank" rel="noopener">Repository</a>
+    </p>
+  </header>
 
-  <h4>1️⃣ Main Menu</h4>
-  <p>This is the starting screen where you can choose to play the game or exit.</p>
-  <img src="../assets/othello/Main_Menu.png" alt="Main Menu">
+  <p>Othello is a useful testbed because the branching factor is small enough that classical search is tractable, but the value of a position is famously hard to hand-write — early disc advantage is often a liability. That makes it a clean place to put search-based and learned agents side by side and let them play.</p>
 
-  <h4>2️⃣ Player Algorithm Selection</h4>
-  <p>Each player can choose their preferred algorithm for gameplay:</p>
-  <div class="img-row">
-    <img src="../assets/othello/algo1.png" alt="Player 1 Algorithm">
-    <img src="../assets/othello/algo2.png" alt="Player 2 Algorithm">
+  <h2>The four agents</h2>
+
+  <h3>Minimax</h3>
+  <p>Builds the game tree to a fixed depth and backs up a heuristic score, assuming the opponent plays optimally. Exact for the depth it reaches, and it will solve the endgame outright once the horizon reaches a terminal state. The cost is exponential in depth, and it gives the opponent credit for never blundering.</p>
+
+  <h3>Alpha-beta pruning</h3>
+  <p>The same search, with branches discarded once they cannot affect the result: a move worse than the current lower bound cannot be chosen, so its subtree is never expanded. Identical output to minimax, substantially less work, which buys extra depth for the same time budget. It is still bounded by the horizon.</p>
+
+  <h3>Monte Carlo tree search</h3>
+  <p>Rather than evaluating positions with a heuristic, MCTS plays random games out from candidate moves and keeps the statistics, expanding the branches that look promising while still sampling the rest. It needs no evaluation function and adapts to how the opponent actually plays, but it costs more computation per move and offers no optimality guarantee.</p>
+
+  <h3>Actor-critic, trained by self-play</h3>
+  <p>A residual network with two heads — a policy head proposing moves and a value head scoring the position — used to guide the tree search instead of random rollouts. Training is the AlphaZero loop: the engine plays itself, stores <code>(state, policy, value)</code> triples, fits the network to them, and repeats with the improved network driving the next round of games.</p>
+
+<pre><code>python generate_eps.py --self_play 100        # self-play games → training data
+python training_eps.py --BatchSize 32 --lr 1e-4 --epochs 10
+python run.py --self_play 1000 --search 1500 --iterations 10</code></pre>
+
+  <p>Search depth, simulation count and network shape are all exposed as flags (<code>--depth</code>, <code>--search</code>, <code>--NB</code>, <code>--NH</code>), so any two agents can be matched at comparable compute rather than at their defaults — which is the only way the comparison means anything.</p>
+
+  <h2>Playing them against each other</h2>
+
+  <figure>
+    <img src="../assets/othello/drawpng.png" alt="Othello board at the end of a game, with the final score shown as 32 to 32" width="800" height="632" loading="lazy" decoding="async">
+    <figcaption>A finished game between two engine agents, ending 32–32. Draws are common when both sides search deeply enough to avoid the standard traps.</figcaption>
+  </figure>
+
+  <p>Every player slot is independent, so the same board supports human against engine, engine against engine, and human against human. <code>MCTs_vs_MinMax.py</code> runs the head-to-head case without the GUI, which is what makes systematic comparison practical.</p>
+
+  <h2>Interface</h2>
+
+  <div class="fig-row">
+    <figure>
+      <img src="../assets/othello/Main_Menu.png" alt="Othello main menu with Play and Quit options" width="996" height="750" loading="lazy" decoding="async">
+      <figcaption>Entry screen.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/othello/algo1.png" alt="Screen for selecting which algorithm a player uses" width="992" height="747" loading="lazy" decoding="async">
+      <figcaption>Each player picks an agent independently; difficulty maps onto search depth or simulation count.</figcaption>
+    </figure>
   </div>
 
-  <h4>3️⃣ Difficulty Selection</h4>
-  <p>Here you can specify the difficulty level for the chosen algorithm.</p>
-  <img src="../assets/othello/diff.png" alt="Difficulty Selection">
-
-  <h4>4️⃣ Game Screen</h4>
-  <p>The main game board where players compete against each other using the AI.</p>
-  <p><em>(Additional screenshot or description can go here if available.)</em></p>
-
-  <h3>🧠 Algorithms Implemented</h3>
-
-  <h4>🔸 MinMax Algorithm</h4>
+  <h2>Limitations</h2>
   <ul>
-    <li>Explores all possible moves up to a certain depth.</li>
-    <li>Uses a heuristic evaluation function to assign scores.</li>
-    <li>Performs backtracking to find the optimal move.</li>
-    <li>Supported with optional alpha-beta pruning for efficiency.</li>
+    <li>The actor-critic agent was trained on a modest number of self-play iterations on a single machine. It plays credibly but has not been trained to the point where it reliably beats a deep alpha-beta search.</li>
+    <li>The minimax heuristic is hand-written and weights disc count and mobility; a stronger evaluation would change the search comparison meaningfully.</li>
+    <li>Agents are compared at default settings rather than at matched wall-clock budgets, so the head-to-head results indicate more than they prove.</li>
   </ul>
 
-  <h4>🔸 Monte Carlo Tree Search (MCTS)</h4>
-  <ul>
-    <li>Simulates many random playouts to evaluate moves.</li>
-    <li>Balances exploration and exploitation using UCB1.</li>
-    <li>Performs selection, expansion, simulation, and backpropagation.</li>
-    <li>Particularly powerful with time-limited decision making.</li>
-  </ul>
+</article>
+</main>
 
-  <h3>⚙️ Features</h3>
-  <ul>
-    <li>Interactive GUI using <strong>Pygame</strong>.</li>
-    <li>Support for human vs AI, AI vs AI, and human vs human games.</li>
-    <li>Flexible algorithm and difficulty settings per player.</li>
-    <li>Real-time board update and move highlighting.</li>
-  </ul>
-</div>
+<footer class="site-footer">
+  <span>Cairo → Cape Town</span>
+  <span><a href="mailto:waleedalzamil80@gmail.com">waleedalzamil80@gmail.com</a> · <a href="https://github.com/WaleedAlzamil80" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/waleedalzamil80" target="_blank" rel="noopener">LinkedIn</a></span>
+</footer>
 
 </body>
 </html>
