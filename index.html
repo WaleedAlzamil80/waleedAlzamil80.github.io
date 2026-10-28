@@ -51,7 +51,9 @@
     "Topological deep learning",
     "Graph neural networks",
     "3D point cloud processing",
-    "Applied mathematics"
+    "Applied mathematics",
+    "Theory of deep learning",
+    "Topological data analysis"
   ],
   "sameAs": [
     "https://github.com/WaleedAlzamil80",
@@ -88,7 +90,7 @@
         <p class="role">AI researcher, geometric &amp; topological deep learning</p>
       </div>
     </div>
-    <p class="lede">Egyptian machine learning engineer, now an MSc student in AI for Science at AIMS South Africa. My work sits where 3D geometry, graphs, and mathematics meet — from 3D dental anatomy to graph networks for business-process data. I am moving from applied ML engineering into research: an MSc thesis on geometric and topological deep learning, then a PhD in the same area.</p>
+    <p class="lede">Egyptian machine learning engineer, now an MSc student in AI for Science at AIMS South Africa. My work sits where 3D geometry, graphs, and mathematics meet — from 3D dental anatomy to graph networks for business-process data. I am moving from applied ML engineering into research: an MSc thesis on topological and geometric deep learning, then a PhD on the topology and theory of deep learning.</p>
 
     <div class="badge-row">
       <span class="badge"><strong>Google DeepMind Scholar</strong></span>
@@ -416,7 +418,7 @@
     <span class="date">September 2026</span>
   </div>
   <div class="now-block prose">
-    <p>First year of the MSc in AI for Science at AIMS South Africa in Cape Town. Coursework now, with the thesis next, on geometric and topological deep learning for structured scientific data. After the MSc, I plan to apply for a PhD in topological and geometric deep learning.</p>
+    <p>First year of the MSc in AI for Science at AIMS South Africa in Cape Town. Coursework now, with the thesis next, on topological and geometric deep learning. After the MSc, I plan to apply for a PhD on the topology and theory of deep learning.</p>
     <p>Open to research conversations and supervision enquiries — write to <a href="mailto:walzamil@aims.ac.za">walzamil@aims.ac.za</a>.</p>
   </div>
 </section>
@@ -424,17 +426,21 @@
 <section class="section" id="research">
   <div class="section-head"><h2>Research focus</h2></div>
   <div class="focus-list">
-<div class="focus-item">
-      <h3>Geometric deep learning</h3>
-      <p>Learning directly from 3D structure — point clouds, meshes, surfaces — rather than flattening it away. Applied to segmenting dental anatomy with DGCNN and Point Cloud Transformers, and to designing a FoldingNet-based generator for it, and to gravitational-lens classification with masked autoencoders.</p>
+    <div class="focus-item">
+      <h3>Topological deep learning</h3>
+      <p>Learning on structures richer than graphs — simplicial and cell complexes, higher-order relations — and using persistent homology and other tools from topological data analysis to describe the shape of data. I am interested in what these models can represent that message-passing graph networks cannot.</p>
     </div>
     <div class="focus-item">
-      <h3>Graph &amp; Relational Networks</h3>
-      <p>Modeling complex interactions, dependencies, and dynamic relational structures. Built graph-based architectures for multi-entity dependency modeling, concept-drift adaptation, and temporal pattern recognition.</p>
+      <h3>Theory of deep learning</h3>
+      <p>Understanding why architectures work: expressivity, symmetry and equivariance, and the mathematical limits of what a given model class can distinguish or learn.</p>
     </div>
     <div class="focus-item">
-      <h3>Mathematical AI for Science</h3>
-      <p>Developing geometry- and topology-informed AI models for complex physical systems. Targeting research in topological data analysis (TDA), differential geometry, and sheaf neural networks for molecular and structural science.</p>
+      <h3>Applied mathematics for science</h3>
+      <p>Differential geometry, topology and analysis as tools for scientific problems, where structure such as shape, symmetry and conservation should be built into the model rather than learned from scratch.</p>
+    </div>
+    <div class="focus-item">
+      <h3>Where I started: geometric and graph learning</h3>
+      <p>My applied work gave me the motivation. I segmented and generated 3D dental anatomy with DGCNN, Point Cloud Transformers and FoldingNet, classified gravitational lenses with masked autoencoders, and built graph networks for object-centric business-process data.</p>
     </div>
   </div>
 </section>
@@ -496,39 +502,7 @@
         </div>
       </div>
     </div>
-    <div class="pub-item">
-      <span class="yr">2024</span>
-      <div class="body">
-        <strong><a href="publications/HollywoodSmile_POC.pdf" target="_blank" rel="noopener">Teeth Bleaching and Hollywood Smile: Proof of Concept</a></strong>
-        <span><span class="me">Waleed Alzamil</span></span>
-        <span class="venue">Proof-of-concept report</span>
-        <div class="pub-links">
-          <a href="publications/HollywoodSmile_POC.pdf" target="_blank" rel="noopener">PDF</a>
-          <a href="https://github.com/WaleedAlzamil80/SmileShift" target="_blank" rel="noopener">Code</a>
-        </div>
-      </div>
-    </div>
   </div>
-
-  <details class="pub-group pub-group--minor">
-    <summary>Coursework &amp; early reports</summary>
-    <div class="pub-item">
-      <span class="yr">2024</span>
-      <div class="body"><strong><a href="publications/rag.pdf" target="_blank" rel="noopener">RAG System for Test Case Generation</a></strong></div>
-    </div>
-    <div class="pub-item">
-      <span class="yr">2023</span>
-      <div class="body"><strong><a href="publications/EMG_report.pdf" target="_blank" rel="noopener">Synergy EMGs Proportional Control</a></strong><span>Project report</span></div>
-    </div>
-    <div class="pub-item">
-      <span class="yr">2023</span>
-      <div class="body"><strong><a href="publications/MileStone1.pdf" target="_blank" rel="noopener">Comparison of Optimization Algorithms</a></strong><span>Computational Intelligence coursework</span></div>
-    </div>
-    <div class="pub-item">
-      <span class="yr">2023</span>
-      <div class="body"><strong><a href="publications/MileStone2.pdf" target="_blank" rel="noopener">Deep Convolutional Neural Networks for Image Classification</a></strong><span>Computational Intelligence coursework</span></div>
-    </div>
-  </details>
 </section>
 
 <section class="section" id="projects">
@@ -563,6 +537,8 @@
     </div>
   </div>
 
+  <details class="pub-group pub-group--minor">
+    <summary>More projects</summary>
   <div class="project-list">
     <div class="row">
       <div><strong>3D Interactive Virtual Estate (3DIVE)</strong><br><span>3D reconstruction from video via COLMAP, Gaussian Splatting and SuGaR</span></div>
@@ -576,10 +552,15 @@
       <a href="projects/realtimeviolencedetection.html">View →</a>
     </div>
     <div class="row">
+      <div><strong>Teeth Bleaching and Hollywood Smile</strong><br><span>Proof of concept for automated smile-design visualisation</span></div>
+      <a href="https://github.com/WaleedAlzamil80/SmileShift" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+    <div class="row">
       <div><strong>Synergy EMGs Proportional Control</strong><br><span>Predicting joint angles from EMG signals for prosthetic control</span></div>
       <a href="https://github.com/WaleedAlzamil80/EMG_Synergy_project" target="_blank" rel="noopener">GitHub →</a>
     </div>
   </div>
+  </details>
 </section>
 
 <section class="section" id="experience">
