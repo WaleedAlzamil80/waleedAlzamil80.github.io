@@ -71,8 +71,8 @@
   <nav aria-label="Sections">
     <a href="#now">Now</a>
     <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
     <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
@@ -90,12 +90,11 @@
         <p class="role">AI researcher, geometric &amp; topological deep learning</p>
       </div>
     </div>
-    <p class="lede">Egyptian machine learning engineer, now an MSc student in AI for Science at AIMS South Africa. My work sits where 3D geometry, graphs, and mathematics meet — from 3D dental anatomy to graph networks for business-process data. I am moving from applied ML engineering into research: an MSc thesis on topological and geometric deep learning, then a PhD on the topology and theory of deep learning.</p>
+    <p class="lede">Egyptian machine learning engineer, now an MSc student in AI for Science at AIMS South Africa. My work sits where 3D geometry, graphs, and mathematics meet — from 3D dental anatomy to gravitational-lensing images. I am moving from applied ML engineering into research: an MSc thesis on topological and geometric deep learning, then a PhD on the topology and theory of deep learning.</p>
 
     <div class="badge-row">
       <span class="badge"><strong>Google DeepMind Scholar</strong></span>
       <span class="badge">AIMS · MSc AI for Science</span>
-      <span class="badge">ICPM 2026 (accepted paper)</span>
     </div>
 
     <div class="meta-links">
@@ -440,70 +439,11 @@
     </div>
     <div class="focus-item">
       <h3>Where I started: geometric and graph learning</h3>
-      <p>My applied work gave me the motivation. I segmented and generated 3D dental anatomy with DGCNN, Point Cloud Transformers and FoldingNet, classified gravitational lenses with masked autoencoders, and built graph networks for object-centric business-process data.</p>
+      <p>My applied work gave me the motivation. I segmented and generated 3D dental anatomy with DGCNN, Point Cloud Transformers and FoldingNet, classified gravitational lenses with masked autoencoders, and in industry built graph neural networks over multi-entity relational data.</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="publications">
-  <div class="section-head"><h2>Publications</h2></div>
-
-  <div class="pub-group">
-    <h3>Peer-reviewed</h3>
-    <div class="pub-item">
-      <span class="yr">2026</span>
-      <div class="body">
-        <strong><a href="publications/ProCG_ICPM2026.pdf" target="_blank" rel="noopener">Between Text and Events: Process Context Graph (ProCG)</a></strong>
-        <span>Mohammad Dallash, <span class="me">Waleed Alzamil</span>, Kyrillos Eskander, Xixi Lu, Ahmed Elkholy</span>
-        <span class="venue">International Conference on Process Mining (ICPM 2026) — accepted</span>
-        <div class="pub-links"><a href="publications/ProCG_ICPM2026.pdf" target="_blank" rel="noopener">PDF</a></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="pub-group">
-    <h3>Research collaborations &amp; acknowledgments</h3>
-    <div class="pub-item">
-      <span class="yr">2025</span>
-      <div class="body">
-        <strong><a href="publications/AdvancedDentalJournal_2025.pdf" target="_blank" rel="noopener">The Application of Artificial-based Models to Classify Oral Cavity Findings Based on Clinical Image Analysis</a></strong>
-        <span>Noran Ayman M. Ismael, et al.</span>
-        <span class="venue">Advanced Dental Journal, Vol. 7, Issue 4, pp. 627–641 — acknowledged for developing the core AI classification model</span>
-        <div class="pub-links">
-          <a href="publications/AdvancedDentalJournal_2025.pdf" target="_blank" rel="noopener">PDF</a>
-          <a href="https://doi.org/10.21608/adjc.2025.378150.1754" target="_blank" rel="noopener">DOI</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="pub-group">
-    <h3>Technical reports</h3>
-    <div class="pub-item">
-      <span class="yr">2026</span>
-      <div class="body">
-        <strong><a href="publications/TaskEntities_TechReport.pdf" target="_blank" rel="noopener">On the Redundancy of Task Entities in Object-Centric Event Logs</a></strong>
-        <span><span class="me">Waleed Alzamil</span></span>
-        <span class="venue">Technical report, ClearSky, 2026</span>
-        <div class="pub-links"><a href="publications/TaskEntities_TechReport.pdf" target="_blank" rel="noopener">PDF</a></div>
-      </div>
-    </div>
-    <div class="pub-item">
-      <span class="yr">2025</span>
-      <div class="body">
-        <strong>AI-Automated Dental Crown Generation: 3D Teeth Segmentation and Generation</strong>
-        <span><span class="me">Waleed Alzamil</span></span>
-        <span class="venue">Graduation project technical reports, Ain Shams University</span>
-        <div class="pub-links">
-          <a href="publications/CrownGeneration_part_1.pdf" target="_blank" rel="noopener">Part 1 · Segmentation</a>
-          <a href="publications/CrownGeneration_part_2.pdf" target="_blank" rel="noopener">Part 2 · Generation</a>
-          <a href="projects/crown.html">Write-up</a>
-          <a href="https://github.com/WaleedAlzamil80/3DModels" target="_blank" rel="noopener">Code</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="section" id="projects">
   <div class="section-head"><h2>Selected projects</h2></div>
@@ -513,7 +453,7 @@
     <div>
       <h3>AI-Automated Dental Crown Generation</h3>
       <div class="stack">PyTorch · DGCNN · Point Cloud Transformer · EdgeConv · FoldingNet</div>
-      <p>Graduation project, and the work I would point at first. Four modules take an intraoral scan to a fitted crown: per-point <strong>segmentation into 33 classes at 95% accuracy</strong>, a self-supervised <strong>canonical alignment</strong> network that predicts the inverse of a random rigid transform and projects it onto SO(3) by SVD, <strong>margin-line estimation</strong> by shape completion, and a generator built from EdgeConv, a geometry-aware transformer and a FoldingNet decoder.</p>
+      <p>Graduation project, and the work I would point at first. Four modules take an intraoral scan to a fitted crown: per-point <strong>segmentation into 33 classes at 95% accuracy</strong>, a self-supervised <strong>canonical alignment</strong> network, trained with contrastive learning and by predicting the inverse of a random rigid transform, projected onto SO(3) by SVD, <strong>margin-line estimation</strong> by shape completion, and a generator built from EdgeConv, a geometry-aware transformer and a FoldingNet decoder.</p>
       <p>The segmentation model ships as a Dockerised FastAPI service. The generator is implemented end to end but untrained — there is no paired crown dataset to supervise it.</p>
       <div class="links">
         <a href="projects/crown.html">Full write-up →</a>
@@ -563,6 +503,62 @@
   </details>
 </section>
 
+<section class="section" id="publications">
+  <div class="section-head"><h2>Publications</h2></div>
+
+  <div class="pub-group">
+    <h3>Research collaborations &amp; acknowledgments</h3>
+    <div class="pub-item">
+      <span class="yr">2025</span>
+      <div class="body">
+        <strong><a href="publications/AdvancedDentalJournal_2025.pdf" target="_blank" rel="noopener">The Application of Artificial-based Models to Classify Oral Cavity Findings Based on Clinical Image Analysis</a></strong>
+        <span>Noran Ayman M. Ismael, et al.</span>
+        <span class="venue">Advanced Dental Journal, Vol. 7, Issue 4, pp. 627–641 — acknowledged for developing the core AI classification model</span>
+        <div class="pub-links">
+          <a href="publications/AdvancedDentalJournal_2025.pdf" target="_blank" rel="noopener">PDF</a>
+          <a href="https://doi.org/10.21608/adjc.2025.378150.1754" target="_blank" rel="noopener">DOI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub-group">
+    <h3>Manuscripts &amp; technical reports</h3>
+    <div class="pub-item">
+      <span class="yr">2026</span>
+      <div class="body">
+        <strong><a href="publications/ProCG_ICPM2026.pdf" target="_blank" rel="noopener">Between Text and Events: Process Context Graph (ProCG)</a></strong>
+        <span>Mohammad Dallash, <span class="me">Waleed Alzamil</span>, Kyrillos Eskander, Xixi Lu, Ahmed Elkholy</span>
+        <span class="venue">Manuscript, 2026</span>
+        <div class="pub-links"><a href="publications/ProCG_ICPM2026.pdf" target="_blank" rel="noopener">PDF</a></div>
+      </div>
+    </div>
+    <div class="pub-item">
+      <span class="yr">2026</span>
+      <div class="body">
+        <strong><a href="publications/TaskEntities_TechReport.pdf" target="_blank" rel="noopener">On the Redundancy of Task Entities in Object-Centric Event Logs</a></strong>
+        <span><span class="me">Waleed Alzamil</span></span>
+        <span class="venue">Technical report, ClearSky, 2026</span>
+        <div class="pub-links"><a href="publications/TaskEntities_TechReport.pdf" target="_blank" rel="noopener">PDF</a></div>
+      </div>
+    </div>
+    <div class="pub-item">
+      <span class="yr">2025</span>
+      <div class="body">
+        <strong>AI-Automated Dental Crown Generation: 3D Teeth Segmentation and Generation</strong>
+        <span><span class="me">Waleed Alzamil</span></span>
+        <span class="venue">Graduation project technical reports, Ain Shams University</span>
+        <div class="pub-links">
+          <a href="publications/CrownGeneration_part_1.pdf" target="_blank" rel="noopener">Part 1 · Segmentation</a>
+          <a href="publications/CrownGeneration_part_2.pdf" target="_blank" rel="noopener">Part 2 · Generation</a>
+          <a href="projects/crown.html">Write-up</a>
+          <a href="https://github.com/WaleedAlzamil80/3DModels" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="experience">
   <div class="section-head"><h2>Experience</h2></div>
   <div class="timeline">
@@ -571,8 +567,8 @@
       <h3>Machine Learning Engineer</h3>
       <div class="org">ClearSky.ai</div>
       <ul>
-        <li>Graph-based relational networks for anomaly detection in object-centric business processes; co-authored ProCG (ICPM 2026)</li>
-        <li>DSPy-powered pipelines orchestrated with LangGraph; MCP tools and change-data-capture for object-centric process mining</li>
+        <li>Graph neural networks for anomaly detection on multi-entity relational event data; co-authored the ProCG manuscript</li>
+        <li>LLM pipelines with DSPy and LangGraph, and data tooling for the product</li>
       </ul>
     </div>
     <div class="entry">
@@ -589,7 +585,8 @@
       <h3>AI Engineer</h3>
       <div class="org">Tanweer</div>
       <ul>
-        <li>Fine-tuned RWKV-4-World for English↔Arabic translation; cut episode translation time from 8 hours to 30 seconds, deployed on GCP</li>
+        <li>Built a ChatGPT-based pipeline that translates full episodes, cutting translation time from 8 hours to 30 seconds; deployed on GCP</li>
+        <li>Experimented with fine-tuning RWKV-4-World for English↔Arabic translation</li>
       </ul>
     </div>
     <div class="entry">

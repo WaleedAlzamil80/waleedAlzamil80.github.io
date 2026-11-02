@@ -95,7 +95,7 @@
   </figure>
 
   <h2>Canonical alignment</h2>
-  <p>This is the part I would point at first. There are no labelled alignment pairs, so the network is trained against itself: centre each point cloud, apply a random rigid transformation, and ask the model to predict the inverse that undoes it. The loss combines reconstruction against the original with a regularisation term pushing the predicted 3×3 matrix toward orthogonality,</p>
+  <p>This is the part I would point at first. There are no labelled alignment pairs, so both strategies I used are self-supervised. <strong>Contrastive learning</strong> learns rotation-invariant features by contrasting randomly transformed copies of the same arch. <strong>Rotation prediction</strong> trains the network against itself: centre each point cloud, apply a random rigid transformation, and ask the model to predict the inverse that undoes it. The loss combines reconstruction against the original with a regularisation term pushing the predicted 3×3 matrix toward orthogonality,</p>
 
 <pre><code>L = ‖X̄ − X̂‖²_F  +  λ‖I − RᵀR‖²_F        (λ = 0.001)</code></pre>
 
