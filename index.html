@@ -90,7 +90,7 @@
         <p class="role">AI researcher, geometric &amp; topological deep learning</p>
       </div>
     </div>
-    <p class="lede">Egyptian machine learning engineer, now an MSc student in AI for Science at AIMS South Africa. My work sits where 3D geometry, graphs, and mathematics meet — from 3D dental anatomy to gravitational-lensing images. I am moving from applied ML engineering into research: an MSc thesis on topological and geometric deep learning, then a PhD on the topology and theory of deep learning.</p>
+    <p class="lede">Egyptian machine learning engineer, now an MSc student in AI for Science at AIMS South Africa. My work sits where 3D geometry, graphs, and mathematics meet — from 3D dental anatomy and gravitational-lensing images to the internal paths of diffusion models. I am moving from applied ML engineering into research: an MSc thesis on topological and geometric deep learning, then a PhD on the topology and theory of deep learning.</p>
 
     <div class="badge-row">
       <span class="badge"><strong>Google DeepMind Scholar</strong></span>
@@ -414,10 +414,10 @@
 <section class="section" id="now">
   <div class="section-head">
     <h2>Now</h2>
-    <span class="date">September 2026</span>
+    <span class="date">November 2026</span>
   </div>
   <div class="now-block prose">
-    <p>First year of the MSc in AI for Science at AIMS South Africa in Cape Town. Coursework now, with the thesis next, on topological and geometric deep learning. After the MSc, I plan to apply for a PhD on the topology and theory of deep learning.</p>
+    <p>First year of the MSc in AI for Science at AIMS South Africa in Cape Town. I just finished a course project on <a href="projects/diffusion-path.html">what a diffusion model’s internal path says about how hard an image is for people</a>. The thesis comes next, on topological and geometric deep learning. After the MSc, I plan to apply for a PhD on the topology and theory of deep learning.</p>
     <p>Open to research conversations and supervision enquiries — write to <a href="mailto:walzamil@aims.ac.za">walzamil@aims.ac.za</a>.</p>
   </div>
 </section>
@@ -427,7 +427,7 @@
   <div class="focus-list">
     <div class="focus-item">
       <h3>Topological deep learning</h3>
-      <p>Learning on structures richer than graphs — simplicial and cell complexes, higher-order relations — and using persistent homology and other tools from topological data analysis to describe the shape of data. I am interested in what these models can represent that message-passing graph networks cannot.</p>
+      <p>Learning on structures richer than graphs — simplicial and cell complexes, higher-order relations — and using persistent homology and other tools from topological data analysis to describe the shape of data. I am interested in what these models can represent that message-passing graph networks cannot, and in when order-blind topology misses what an order-aware description of a model’s internal path captures.</p>
     </div>
     <div class="focus-item">
       <h3>Theory of deep learning</h3>
@@ -449,11 +449,25 @@
   <div class="section-head"><h2>Selected projects</h2></div>
 
   <div class="project project--lead">
+    <img src="assets/diffusion/x0_strips.png" alt="A diffusion model’s estimate of the clean image at steps 10 to 50 for an easy and two hard photos: the easy one is clear by step 20, the hard ones only near step 30 to 40" width="1165" height="777" loading="lazy" decoding="async">
+    <div>
+      <h3>Does a Diffusion Model’s Path Show Which Images Are Hard to See?</h3>
+      <div class="stack">PyTorch · DiT-XL/2 · DDIM inversion · persistent homology · held-out testing</div>
+      <p>People name some photos after a 17 ms flash and need 10 seconds for others. I recorded the internal path of a diffusion model while it rebuilds 2,229 ImageNet images, and tested on 1,000 held-out images, corrected for every layer and step tried, whether that path predicts how long people need to see each image.</p>
+      <p>It does — <strong>all 280 layer–step snapshots beat chance</strong> — but the model’s own confidence is a strong baseline that nothing beats alone. What adds to it sits <strong>early in the rebuild</strong>, and the <strong>order of the steps</strong> matters in the middle layers, which order-blind topology cannot see.</p>
+      <div class="links">
+        <a href="projects/diffusion-path.html">Full write-up →</a>
+        <a href="publications/DiffusionPath_AIMS2026.pdf" target="_blank" rel="noopener">Report</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project">
     <img src="assets/3dmodel/results/align-after-svd.png" alt="A dental arch point cloud aligned to its canonical pose, predicted arch in blue overlaid on green ground truth" width="1179" height="828" loading="lazy" decoding="async">
     <div>
       <h3>AI-Automated Dental Crown Generation</h3>
       <div class="stack">PyTorch · DGCNN · Point Cloud Transformer · EdgeConv · FoldingNet</div>
-      <p>Graduation project, and the work I would point at first. Four modules take an intraoral scan to a fitted crown: per-point <strong>segmentation into 33 classes at 95% accuracy</strong>, a self-supervised <strong>canonical alignment</strong> network, trained with contrastive learning and by predicting the inverse of a random rigid transform, projected onto SO(3) by SVD, <strong>margin-line estimation</strong> by shape completion, and a generator built from EdgeConv, a geometry-aware transformer and a FoldingNet decoder.</p>
+      <p>Graduation project, and my main applied work. Four modules take an intraoral scan to a fitted crown: per-point <strong>segmentation into 33 classes at 95% accuracy</strong>, a self-supervised <strong>canonical alignment</strong> network, trained with contrastive learning and by predicting the inverse of a random rigid transform, projected onto SO(3) by SVD, <strong>margin-line estimation</strong> by shape completion, and a generator built from EdgeConv, a geometry-aware transformer and a FoldingNet decoder.</p>
       <p>The segmentation model ships as a Dockerised FastAPI service. The generator is implemented end to end but untrained — there is no paired crown dataset to supervise it.</p>
       <div class="links">
         <a href="projects/crown.html">Full write-up →</a>
@@ -488,14 +502,6 @@
       <a href="projects/othello-ai.html">View →</a>
     </div>
     <div class="row">
-      <div><strong>Real-Time Violence Detection</strong><br><span>MobileNetV2 + BiLSTM for temporal video analysis — team project, NTI</span></div>
-      <a href="projects/realtimeviolencedetection.html">View →</a>
-    </div>
-    <div class="row">
-      <div><strong>Teeth Bleaching and Hollywood Smile</strong><br><span>Proof of concept for automated smile-design visualisation</span></div>
-      <a href="https://github.com/WaleedAlzamil80/SmileShift" target="_blank" rel="noopener">GitHub →</a>
-    </div>
-    <div class="row">
       <div><strong>Synergy EMGs Proportional Control</strong><br><span>Predicting joint angles from EMG signals for prosthetic control</span></div>
       <a href="https://github.com/WaleedAlzamil80/EMG_Synergy_project" target="_blank" rel="noopener">GitHub →</a>
     </div>
@@ -524,6 +530,18 @@
 
   <div class="pub-group">
     <h3>Manuscripts &amp; technical reports</h3>
+    <div class="pub-item">
+      <span class="yr">2026</span>
+      <div class="body">
+        <strong><a href="publications/DiffusionPath_AIMS2026.pdf" target="_blank" rel="noopener">Does a Diffusion Model’s Path Show Which Images Are Hard to See?</a></strong>
+        <span><span class="me">Waleed Alzamil</span></span>
+        <span class="venue">Course project report, AIMS South Africa, 2026</span>
+        <div class="pub-links">
+          <a href="publications/DiffusionPath_AIMS2026.pdf" target="_blank" rel="noopener">PDF</a>
+          <a href="projects/diffusion-path.html">Write-up</a>
+        </div>
+      </div>
+    </div>
     <div class="pub-item">
       <span class="yr">2026</span>
       <div class="body">

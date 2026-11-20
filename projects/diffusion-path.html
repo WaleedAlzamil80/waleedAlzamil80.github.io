@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Diffusion Model’s Path Says About Human Visual Difficulty — Waleed Alzamil</title>
+<meta name="description" content="Does the internal path of a diffusion model, recorded while it rebuilds an image, predict how long people need to see that image? Tested on 1,000 held-out ImageNet images with human viewing times.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15171c" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="mark" href="../index.html">Waleed Alzamil</a>
+  <nav aria-label="Breadcrumb">
+    <a href="../index.html#projects">← Back to portfolio</a>
+  </nav>
+</header>
+
+<main class="doc-page" id="main">
+<article>
+
+  <header class="doc-head">
+    <p class="doc-kicker">AIMS South Africa · Computer Vision, with an Eye Toward Human Perception · November 2026</p>
+    <h1>Does a Diffusion Model’s Path Show Which Images Are Hard to See?</h1>
+    <p class="doc-standfirst">People name some photos after a 17 ms flash and need 10 seconds for others. A diffusion model rebuilds an image in steps. I asked whether the path its internal states take during that rebuild carries how hard the image is for people — on images the analysis never saw, and beyond what the model’s own confidence already says.</p>
+    <dl class="doc-meta">
+      <dt>Role</dt><dd>Sole author · course final project</dd>
+      <dt>Data</dt><dd>2,229 ImageNet images with human minimum viewing time (Mayo et al., NeurIPS 2023)</dd>
+      <dt>Model</dt><dd>DiT-XL/2, 28 transformer blocks, 50 denoising steps</dd>
+      <dt>Stack</dt><dd>PyTorch · diffusers · scikit-learn · Ripser</dd>
+    </dl>
+    <p class="doc-links">
+      <a href="../publications/DiffusionPath_AIMS2026.pdf" target="_blank" rel="noopener">Report (PDF, 4 pages)</a>
+      <span>Code available on request</span>
+    </p>
+  </header>
+
+  <div class="metrics">
+    <div class="metric"><b>280 / 280</b><span>Snapshots beat chance</span></div>
+    <div class="metric"><b>0.085</b><span>Best test R² (baseline 0.079)</span></div>
+    <div class="metric"><b>10–17</b><span>Layers where order matters</span></div>
+    <div class="metric"><b>1,000</b><span>Held-out images</span></div>
+  </div>
+
+  <h2>Context</h2>
+  <p>Mayo et al. measured, for thousands of ImageNet photos, the <em>minimum viewing time</em>: the shortest flash at which most people name the object, from 17 ms to 10 s. It is a difficulty score made by people. In the brain, hard images take extra processing steps; images that feedforward networks fail on take the inferior temporal cortex about 30 ms longer to solve (Kar et al. 2019). A diffusion model also computes in steps, so its internal path is a natural place to look for the same signal.</p>
+
+  <figure>
+    <img src="../assets/diffusion/x0_strips.png" alt="The model’s estimate of the clean image at steps 10 to 50 for three photos: a water jug clear by step 20, a screw close-up appearing by step 30, and an industrial printer that stays a blur until step 40" width="1165" height="777" loading="lazy" decoding="async">
+    <figcaption>What the model “sees” while it rebuilds. Easy for people (top): the jug is clear by step 20. Hard for people (middle, bottom): the screw appears at step 30, the printer only near step 40. An illustration, not a measurement.</figcaption>
+  </figure>
+
+  <p>Before this project I reproduced <em>The Shape of Reasoning</em>, which links the topology of a language model’s reasoning to its quality. The fit on the paper’s own problems was close to the published one, but on held-out problems it was negative in all 54 settings I tried. So this study was built around held-out data, a baseline to beat, chance levels from shuffled labels, and a correction for every layer and step tried.</p>
+
+  <h2>Approach</h2>
+
+  <h3>From photo to path</h3>
+  <p>Each image is encoded by the VAE, inverted to noise with deterministic DDIM over 50 steps (each step refined three times by fixed-point iteration, reconstruction error 0.039), and rebuilt. While it rebuilds, the output of every one of the 28 blocks is recorded at every step, averaged over the 256 image patches: 1,152 numbers. All paths share one dominant arc, so for every block and step the average of 200 reference images is subtracted.</p>
+
+  <figure>
+    <img src="../assets/diffusion/shared_path.png" alt="Three panels: raw paths share one arc; images differ from the average path by only 5 to 8.5 percent; after subtracting it, each viewing-time level takes its own route" width="1600" height="415" loading="lazy" decoding="async">
+    <figcaption>All paths look alike (left); images differ by only 5–8.5% of the average path (middle); after subtracting it, each difficulty level takes its own route (right).</figcaption>
+  </figure>
+
+  <h3>What is measured</h3>
+  <ul>
+    <li><strong>Snapshot:</strong> one block at one step, reduced to 20 principal components, fed to a linear model — for all 28 blocks × 10 steps (280 cells).</li>
+    <li><strong>Path in order:</strong> one block over all 50 steps — speed, turning angle, curvature, recurrence, settling step. Scrambling the steps changes them.</li>
+    <li><strong>Path as a cloud:</strong> Vietoris–Rips persistence of the same 50 points, which ignores the order.</li>
+    <li><strong>Baseline B:</strong> what the models give for free — ResNet-50 confidence, the class effect, the noise-prediction size and the reconstruction error.</li>
+  </ul>
+
+  <h3>How a result is judged</h3>
+  <p>The images were split once before any analysis: 1,029 for development, 1,000 locked away for testing, 200 for the template. Every model is fitted on the development images and scored once on the test images. With 280 snapshots and 28 blocks tried, a result must beat the <em>best</em> of all tries on shuffled labels (a max-statistic correction), and a gain over B must hold with intervals widened for all tries.</p>
+
+  <h2>Three questions, three answers</h2>
+
+  <h3>1 · Does the model’s inside predict human difficulty on new images? Yes.</h3>
+  <p>All 280 snapshots predict log viewing time on the 1,000 test images after the correction (global p = 0.001). The effect is small — the best is R² 0.085 at block 17, step 35 — partly because the human score has only six coarse levels.</p>
+
+  <figure>
+    <img src="../assets/diffusion/test_map.png" alt="Heat map of test R-squared for blocks 0 to 27 by steps 5 to 50: every cell above chance, brightest in the middle blocks late in the rebuild; squares mark cells at early steps that add to the baseline" width="900" height="763" loading="lazy" decoding="async">
+    <figcaption>Test R² of every block and step on the held-out images. Squares: snapshots that add to the confidence baseline.</figcaption>
+  </figure>
+
+  <h3>2 · Is it more than the model’s confidence? Partly.</h3>
+  <p>Confidence is a strong baseline. Nothing beats it on its own: the best snapshot is level with it, and the path in order alone reaches about half of it. Most of B comes from the diffusion model itself rather than the outside classifier. But snapshots taken early in the rebuild, when the image is still mostly noise, add something confidence misses: about 20 of the 280, all at steps 5–20.</p>
+
+  <table>
+    <thead>
+      <tr><th>Inputs (fitted on development, scored on test)</th><th class="num">Test R²</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>ResNet-50 confidence alone</td><td class="num">0.039</td></tr>
+      <tr><td>DiT’s own three numbers</td><td class="num">0.055</td></tr>
+      <tr><td>B, all four</td><td class="num">0.079</td></tr>
+      <tr><td>Best path in order, alone</td><td class="num">0.040</td></tr>
+      <tr><td>Best snapshot, alone</td><td class="num">0.085</td></tr>
+      <tr><td><strong>B + one early snapshot</strong></td><td class="num"><strong>0.115–0.138</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>3 · Does the order of the steps matter? Yes, in the middle layers.</h3>
+  <p>The path features are fitted on the development images; then the 50 steps of every image are scrambled into its own random order, 1,000 times, refitting each time. On the test images the real order beats every scramble in blocks 10–17, after correcting for all 28 blocks (block 14: 0.034 in order against 0.013 scrambled). Order-blind topology cannot see this: no path has a single loop, so the cloud only records how spread out a path is.</p>
+
+  <figure>
+    <img src="../assets/diffusion/order_test.png" alt="Line chart across layers 0 to 27 on the held-out images: the path in order rises well above the grey band of scrambled orders in layers 10 to 17 and stays inside or below it elsewhere" width="1170" height="572" loading="lazy" decoding="async">
+    <figcaption>The path in order (orange) against 1,000 scrambled orders (grey band), per layer, on the held-out images. Filled points survive the correction for 28 layers.</figcaption>
+  </figure>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li><strong>The path is a different signal, not a better one.</strong> It never beats the confidence baseline alone, and adding the path in order to the baseline, marginal on the development images, did not hold on the test images.</li>
+    <li>The effects are small: test R² at most 0.085 alone and 0.138 with the baseline.</li>
+    <li>The model is told the true class while it inverts and rebuilds, and so is the baseline. This is a scientific finding, not yet a tool; a label-free extraction is the next run.</li>
+    <li>One model, and a correlation rather than a mechanism.</li>
+  </ul>
+
+  <h2>What it means</h2>
+  <p>Photos people need longer to see also take a longer, more winding path inside the model, and the order of that path carries information about their difficulty. Next: the same test without telling the model the class, a second model, and order-aware topology of the path itself.</p>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <span>Cairo → Cape Town</span>
+  <span><a href="mailto:walzamil@aims.ac.za">walzamil@aims.ac.za</a> · <a href="https://github.com/WaleedAlzamil80" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/waleedalzamil80" target="_blank" rel="noopener">LinkedIn</a></span>
+</footer>
+
+</body>
+</html>
