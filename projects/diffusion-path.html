@@ -38,7 +38,7 @@
       <dt>Stack</dt><dd>PyTorch · diffusers · scikit-learn · Ripser</dd>
     </dl>
     <p class="doc-links">
-      <a href="../publications/DiffusionPath_AIMS2026.pdf" target="_blank" rel="noopener">Report (PDF, 4 pages)</a>
+      <a href="../publications/DiffusionPath_AIMS2026.pdf" target="_blank" rel="noopener">Report (PDF, 5 pages + references)</a>
       <span>Code available on request</span>
     </p>
   </header>
@@ -87,8 +87,8 @@
   <p>All 280 snapshots predict log viewing time on the 1,000 test images after the correction (global p = 0.001). The effect is small — the best is R² 0.085 at block 17, step 35 — partly because the human score has only six coarse levels.</p>
 
   <figure>
-    <img src="../assets/diffusion/test_map.png" alt="Heat map of test R-squared for blocks 0 to 27 by steps 5 to 50: every cell above chance, brightest in the middle blocks late in the rebuild; squares mark cells at early steps that add to the baseline" width="900" height="763" loading="lazy" decoding="async">
-    <figcaption>Test R² of every block and step on the held-out images. Squares: snapshots that add to the confidence baseline.</figcaption>
+    <img src="../assets/diffusion/test_maps2.png" alt="Two heat maps over blocks 0 to 27 and steps 5 to 50 on the held-out images. Left, human viewing time: every cell beyond chance, brightest in the middle blocks late in the rebuild, with squares at early steps marking cells that add to the baseline. Right, the model's correctness: beyond chance mostly from step 20 on." width="1600" height="755" loading="lazy" decoding="async">
+    <figcaption>Every block and step, scored once on the held-out images. Left: human viewing time (squares add to the confidence baseline). Right: the model’s own correctness, readable only later in the rebuild.</figcaption>
   </figure>
 
   <h3>2 · Is it more than the model’s confidence? Partly.</h3>
@@ -108,18 +108,50 @@
     </tbody>
   </table>
 
+  <figure>
+    <img src="../assets/diffusion/bars_test.png" alt="Horizontal bars of test R-squared: baselines in grey up to 0.079 for B; path and snapshot readouts below or level with it; B plus one early snapshot reaches 0.138" width="1245" height="656" loading="lazy" decoding="async">
+    <figcaption>What predicts viewing time on the held-out images. Nothing beats the confidence baseline B alone; an early snapshot added to B goes beyond it.</figcaption>
+  </figure>
+
   <h3>3 · Does the order of the steps matter? Yes, in the middle layers.</h3>
   <p>The path features are fitted on the development images; then the 50 steps of every image are scrambled into its own random order, 1,000 times, refitting each time. On the test images the real order beats every scramble in blocks 10–17, after correcting for all 28 blocks (block 14: 0.034 in order against 0.013 scrambled). Order-blind topology cannot see this: no path has a single loop, so the cloud only records how spread out a path is.</p>
 
   <figure>
-    <img src="../assets/diffusion/order_test.png" alt="Line chart across layers 0 to 27 on the held-out images: the path in order rises well above the grey band of scrambled orders in layers 10 to 17 and stays inside or below it elsewhere" width="1170" height="572" loading="lazy" decoding="async">
-    <figcaption>The path in order (orange) against 1,000 scrambled orders (grey band), per layer, on the held-out images. Filled points survive the correction for 28 layers.</figcaption>
+    <img src="../assets/diffusion/order_both.png" alt="Two line charts across layers 0 to 27 on the held-out images. Left, viewing time: the path in order rises well above the grey band of scrambled orders in layers 10 to 17. Right, the model's correctness: only small gaps in scattered layers." width="1600" height="573" loading="lazy" decoding="async">
+    <figcaption>The path in order (orange) against 1,000 scrambled orders (grey band), per layer, on the held-out images; filled points survive the correction for 28 layers. Left: human viewing time. Right: the model’s correctness, where the gaps are small.</figcaption>
   </figure>
+
+  <h3>Further checks: errors, margin, a stronger baseline</h3>
+  <p>Each of these was written down before it was run, on the same held-out images.</p>
+  <figure>
+    <img src="../assets/diffusion/difficulty.png" alt="Left: bar chart of accuracy by viewing time for the diffusion classifier and ResNet-50, falling from about 0.8 at 17 ms to about 0.5 at 10 s. Right: the class effect over denoising steps, peaking lower and later for 10 s images than for images seen in 50 ms or less." width="1600" height="547" loading="lazy" decoding="async">
+    <figcaption>Two views of difficulty on the held-out images. Left: both classifiers are right less often on images people need longer to see. Right: knowing the class changes the model’s prediction less, and later, for hard images.</figcaption>
+  </figure>
+  <ul>
+    <li><strong>The model’s own correctness.</strong> The model is right on 82% of the images people see in 17 ms and 59% of those they need 10 s for, so I tested whether the same tools predict its errors. Snapshots do, but only late in the rebuild (147 of 155 cells beyond chance are at step 20 or later). The path in order beats its scrambles in a few layers by at most 0.01 AUC, in different layers than for viewing time, and nothing adds to the confidence baseline (AUC 0.755). The case for the path is therefore about human difficulty, not about errors.</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr><th>Model’s correctness, test AUC</th><th class="num">Alone</th><th class="num">+ B</th><th class="num">+ B without ResNet</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Baseline</td><td class="num">–</td><td class="num">0.755</td><td class="num">0.596</td></tr>
+      <tr><td>Best snapshot (of 280)</td><td class="num">0.609</td><td class="num">0.766</td><td class="num">0.636</td></tr>
+      <tr><td>Best path in order</td><td class="num">0.602</td><td class="num">0.766</td><td class="num">0.632</td></tr>
+      <tr><td>Best topology (order-blind)</td><td class="num">0.601</td><td class="num">0.760</td><td class="num">0.631</td></tr>
+      <tr><td>Layers where order beats scrambles</td><td class="num">9, 15–18, 27</td><td class="num">17, 22–27</td><td class="num">17–19, 26, 27</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><strong>A stronger baseline.</strong> Adding the classifier margin (how much better the true class is than its best rival) to B does not help (0.075 vs 0.079), although the margin does correlate with viewing time on its own (ρ = −0.22, p &lt; 10<sup>−11</sup>). Against this stronger baseline, 34 early snapshots still add (R² 0.108–0.136), the path in order does not, and the order effect still holds in layers 10–16.</li>
+    <li><strong>A prediction made in advance.</strong> The peak of the class effect (steps 30–40) is lower for 10 s images than for ≤ 50 ms images (AUC 0.65, p &lt; 10<sup>−6</sup>).</li>
+  </ul>
 
   <h2>Limitations</h2>
   <ul>
     <li><strong>The path is a different signal, not a better one.</strong> It never beats the confidence baseline alone, and adding the path in order to the baseline, marginal on the development images, did not hold on the test images.</li>
-    <li>The effects are small: test R² at most 0.085 alone and 0.138 with the baseline.</li>
+    <li>The effects are small: test R² at most 0.085 alone and 0.138 with the baseline. The order effect for the model’s errors is weak and inconsistent across layers.</li>
     <li>The model is told the true class while it inverts and rebuilds, and so is the baseline. This is a scientific finding, not yet a tool; a label-free extraction is the next run.</li>
     <li>One model, and a correlation rather than a mechanism.</li>
   </ul>
